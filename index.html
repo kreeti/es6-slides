@@ -562,10 +562,67 @@
           </table>
         </section>
         <section>
+          <h4>prototype chain</h4>
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            JavaScript objects are dynamic bags of properties (referred to as own properties). JavaScript objects have a link to a prototype object. When trying to access a property of an object, the property will not only be sought on the object but on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain is reached.
+          </p>
+          <pre>
+            <code data-trim data-noescape>
+              var o = {a: 1};
 
-        </section>
+              // The newly created object o has Object.prototype as its [[Prototype]]
+              // o has no own property named 'hasOwnProperty'
+              // hasOwnProperty is an own property of Object.prototype.
+              // So o inherits hasOwnProperty from Object.prototype
+              // Object.prototype has null as its prototype.
+              // o ---> Object.prototype ---> null
+
+              var a = ["yo", "whadup", "?"];
+
+               // Arrays inherit from Array.prototype
+              // (which has methods like indexOf, forEach, etc.)
+              // The prototype chain looks like:
+              // a ---> Array.prototype ---> Object.prototype ---> null
+
+               function f(){
+                 return 2;
+               }
+
+              // Functions inherit from Function.prototype
+              // (which has methods like call, bind, etc.)
+              // f ---> Function.prototype ---> Object.prototype ---> null
+            </code>
+          </pre>
         </section>
         <section>
+          <h4>Array destructuring</h4>
+          <pre>
+            <code data-trim data-noescape>
+              var foo = ["one", "two", "three"];
+              var [one, two, three] = foo;
+              console.log(one); // "one"
+              console.log(two); // "two"
+              console.log(three); // "three"
+            </code>
+          </pre>
+          <pre>
+            <code data-trim data-noescape>
+              var a, b;
+
+              [a, b] = [1, 2];
+              console.log(a); // 1
+              console.log(b); // 2
+            </code>
+          </pre>
+          <pre>
+            <code data-trim data-noescape>
+              var a, b;
+
+              [a=5, b=7] = [1];
+              console.log(a); // 1
+              console.log(b); // 7
+            </code>
+          </pre>
         </section>
         <section>
         </section>
