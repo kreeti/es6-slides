@@ -178,19 +178,168 @@
           </pre>
         </section>
         <section>
-          <h4>ES6 Array functions</h4>
+          <h5>for...of statement</h5>
+
+          <pre>
+            <code data-trim data-noescape>
+              for (variable of iterable) { statement }
+            </code>
+          </pre>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            variable: On each iteration a value of a different property is assigned to variable.<br>
+            iterable: Object whose enumerable properties are iterated.
+          </p>
+
+          <pre>
+            <code data-trim data-noescape>
+              let iterable = [10, 20, 30];
+
+              for (let value of iterable) {
+                console.log(value);
+              }
+              // 10
+              // 20
+              // 30
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h5>Iterating using map:</h5>
+          <p align="left" style="padding-top: 20px; font-size: 20px">
+            The map() method creates a new array with the results of calling a provided function on every element in this array.
+            map calls a provided callback function once for each element in an array, in order, and constructs a new array from the results
+          </p>
+
+          <pre>
+            <code data-trim data-noescape>
+              var numbers = [1, 4, 9];
+              var roots = numbers.map(Math.sqrt);
+              // roots is now [1, 2, 3], numbers is still [1, 4, 9]
+            </code>
+          </pre>
+
+          <pre>
+            <code data-trim data-noescape>
+              var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
+
+              var reformattedArray = kvArray.map(function(obj){
+                var rObj = {};
+                rObj[obj.key] = obj.value;
+                return rObj;
+              });
+
+              // reformattedArray is now [{1:10}, {2:20}, {3:30}],
+              // kvArray is still [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}]
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h5>reduce() function</h5>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            The reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
+          </p>
+
+          <pre>
+            <code data-trim data-noescape>
+              [0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
+                return previousValue + currentValue;
+              });
+            </code>
+          </pre>
+
+          <table style="padding-top: 20px; font-size: 15px">
+            <thead>
+              <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col"><code>previousValue</code></th>
+                <th scope="col"><code>currentValue</code></th>
+                <th scope="col"><code>currentIndex</code></th>
+                <th scope="col"><code>array</code></th>
+                <th scope="col">return value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">first call</th>
+                <td><code>0</code></td>
+                <td><code>1</code></td>
+                <td><code>1</code></td>
+                <td><code>[0, 1, 2, 3, 4]</code></td>
+                <td><code>1</code></td>
+              </tr>
+              <tr>
+                <th scope="row">second call</th>
+                <td><code>1</code></td>
+                <td><code>2</code></td>
+                <td><code>2</code></td>
+                <td><code>[0, 1, 2, 3, 4]</code></td>
+                <td><code>3</code></td>
+              </tr>
+              <tr>
+                <th scope="row">third call</th>
+                <td><code>3</code></td>
+                <td><code>3</code></td>
+                <td><code>3</code></td>
+                <td><code>[0, 1, 2, 3, 4]</code></td>
+                <td><code>6</code></td>
+              </tr>
+              <tr>
+                <th scope="row">fourth call</th>
+                <td><code>6</code></td>
+                <td><code>4</code></td>
+                <td><code>4</code></td>
+                <td><code>[0, 1, 2, 3, 4]</code></td>
+                <td><code>10</code></td>
+              </tr>
+            </tbody>
+          </table>
         </section>
         <section>
           <h4>Arrow functions</h4>
+          <p  align="left" style="padding-top: 20px; font-size: 25px">
+            An arrow function expression has a shorter syntax compared to function expressions and lexically binds the this value
+          </p>
+          <pre>
+            <code data-trim data-noescape>
+              (param1, param2, …, paramN) => { statements }
+              (param1, param2, …, paramN) => expression
+              // equivalent to:  => { return expression; }
+
+              // Parentheses are optional when there's only one parameter:
+              (singleParam) => { statements }
+              singleParam => { statements }
+
+              // A function with no parameters requires parentheses:
+              () => { statements }
+            </code>
+          </pre>
         </section>
         <section>
-          <h4>Call vs Apply</h4>
-        </section>
-        <section>
-          <h4>Destructuring</h4>
-        </section>
-        <section>
-          <h4>Asynchronous Execution 1</h4>
+          <h4>Arrow function</h4>
+          <pre>
+            <code data-trim data-noescape>
+              var numbers = [1, 4, 9];
+              var roots = numbers.map(() => Math.sqrt);
+              // roots is now [1, 2, 3], numbers is still [1, 4, 9]
+            </code>
+          </pre>
+
+          <pre>
+            <code data-trim data-noescape>
+              var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
+
+              var reformattedArray = kvArray.map((obj) => {
+                var rObj = {};
+                rObj[obj.key] = obj.value;
+                return rObj;
+              });
+
+              // reformattedArray is now [{1:10}, {2:20}, {3:30}],
+              // kvArray is still [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}]
+            </code>
+          </pre>
         </section>
         <section>
           <h4>Asynchronous Execution 2</h4>
