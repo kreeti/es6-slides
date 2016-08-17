@@ -481,6 +481,91 @@
           </pre>
         </section>
         <section>
+          <h5>Prototype based programing using JS</h5>
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+           JavaScript is an object-based language based on prototypes, rather than being class-based. Because of this different basis, it can be less apparent how JavaScript allows you to create hierarchies of objects and to have inheritance of properties and their values.
+          </p>
+          <pre>
+            <code data-trim data-noescape>
+              function Employee() {
+                this.name = "";
+                this.dept = "general";
+              }
+
+              function Manager() {
+                Employee.call(this);
+                this.reports = [];
+              }
+
+              Manager.prototype = Object.create(Employee.prototype);
+
+              function WorkerBee() {
+                Employee.call(this);
+                this.projects = [];
+              }
+
+              WorkerBee.prototype = Object.create(Employee.prototype);
+
+              function SalesPerson() {
+                WorkerBee.call(this);
+                this.dept = "sales";
+                this.quota = 100;
+              }
+
+              SalesPerson.prototype = Object.create(WorkerBee.prototype);
+
+              function Engineer() {
+                WorkerBee.call(this);
+                this.dept = "engineering";
+                this.machine = "";
+              }
+
+              Engineer.prototype = Object.create(WorkerBee.prototype);
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h4>Comparison of class-based and prototype-based object systems</h4>
+          <table  align="left" style="padding-top: 20px; font-size: 20px">
+            <thead>
+              <tr>
+                <th scope="col">Class-based</th>
+                <th scope="col">Prototype-based</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Class and instance are distinct entities.</td>
+                <td>All objects can inherit from another object.</td>
+              </tr>
+              <tr>
+                <td>Define a class with a class definition; instantiate a class with constructor methods.</td>
+                <td>Define and create a set of objects with constructor functions.</td>
+              </tr>
+              <tr>
+                <td>Create a single object with the <code>new</code> operator.</td>
+                <td>Same.</td>
+              </tr>
+              <tr>
+                <td>Construct an object hierarchy by using class definitions to define subclasses of existing classes.</td>
+                <td>Construct an object hierarchy by assigning an object as the prototype associated with a constructor function.</td>
+              </tr>
+              <tr>
+                <td>Inherit properties by following the class chain.</td>
+                <td>Inherit properties by following the prototype chain.</td>
+              </tr>
+              <tr>
+                <td>Class definition specifies <em>all</em> properties of all instances of a class. Cannot add properties dynamically at run time.</td>
+                <td>Constructor function or prototype specifies an <em>initial set</em> of properties. Can add or remove properties dynamically to individual objects or to the entire set of objects.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+
+        </section>
+        </section>
+        <section>
         </section>
         <section>
         </section>
