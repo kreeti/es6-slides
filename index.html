@@ -30,24 +30,152 @@
           <p>Arizona State University<br>Master of Science, Computer Science<br>2004-2005</p>
           <p>B.M.S College of Engineering<br>Bachelor of Engineering, Computer Science<br>1999-2003</p>
         </section>
+
         <section>
           <h4>Functional Programing</h4>
-          <p>Functions are commutative.<br></p>
+          <p align="left" style="padding-top: 20px;">
+            In computer science, functional programming is a programming paradigm—a style of building the structure and elements of computer programs—that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+          </p>
+        </section>
+
+        <section>
+          <h4>Side effect</h4>
+          <p align="left" style="padding-top: 20px;">
+            In computer science, a function or expression is said to have a side effect if it modifies some state or has an observable interaction with calling functions or the outside world.
+          </p>
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            For example, this function has no side effects. Its result depends only on its input arguments, and nothing about the state of the program or its environment changes when it is called:
+          </p>
+          <pre>
+            <code data-trim data-noescape>
+              int square(int x) { return x * x; }
+            </code>
+          </pre>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            In contrast, calling these functions will give you different results depending upon the order in which you call them, because they change something about the state of the computer:
+          </p>
+          <pre>
+            <code data-trim data-noescape>
+              int n = 0;
+              int next_n() { return n++; }
+              void set_n(int newN) { n = newN; }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>Pure function</h4>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            In computer programming, a function may be considered a pure function if both of the following statements about the function hold:
+          </p>
+
+          <ul style="font-size: 25px">
+            <li style="padding-bottom: 10px;">
+              The function always evaluates the same result value given the same argument value(s). The function result value cannot depend on any hidden information or state that may change while program execution proceeds or between different executions of the program, nor can it depend on any external input from I/O devices.
+            </li>
+            <li>
+              Evaluation of the result does not cause any semantically observable side effect or output, such as mutation of mutable objects or output to I/O devices.
+            </li>
+          </ul>
+
+          <pre>
+            <code data-trim data-noescape>
+              var values = { a: 1 };
+
+              function pureFunction ( a ) {
+                var b = 1;
+                a = a * b + 2;
+
+                return a;
+              }
+
+              var c = pureFunction( values.a );
+              // `values.a` has not been modified, it's still 1
+            </code>
+          </pre>
         </section>
         <section>
-          <h4>Call vs Apply 1</h4>
+          <h4>Higher-order functions</h4>
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
+          </p>
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            Higher-order functions allow us to abstract over actions, not just values. They come in several forms. For example, you can have functions that create new functions.
+          </p>
+
+          <pre>
+            <code data-trim data-noescape>
+              function greaterThan(n) {
+                return function(m) { return m > n; };
+              }
+
+              var greaterThan10 = greaterThan(10);
+              console.log(greaterThan10(11));
+              // → true
+            </code>
+          </pre>
         </section>
         <section>
-          <h4>Call vs Apply 2</h4>
+          <h4>Higher-order functions</h4>
+          <pre>
+            <code data-trim data-noescape>
+              var items = [
+              { name: 'Edward', value: 21 },
+              { name: 'Sharpe', value: 37 },
+              { name: 'And', value: 45 },
+              { name: 'The', value: -12 },
+              { name: 'Magnetic' },
+              { name: 'Zeros', value: 37 }
+              ];
+
+              // sort by value
+
+              items.sort(function (a, b) {
+                if (a.value > b.value) {
+                  return 1;
+                }
+
+                if (a.value < b.value) {
+                  return -1;
+                }
+
+                return 0;
+              });
+            </code>
+          </pre>
         </section>
         <section>
-          <h4>This in JS</h4>
-        </section>
-        <section>
-          <h4>Prototype based programing</h4>
-        </section>
-        <section>
-          <h4>Inheritance in JS</h4>
+          <h4>Anonymous function</h4>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            An anonymous function is a function definition that is not bound to an identifier.
+          </p>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">Normal function definition:</p>
+
+          <pre>
+            <code data-trim data-noescape>
+              function hello() {
+                alert('Hello world');
+              }
+
+              hello();
+            </code>
+          </pre>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">Anonymous function definition:</p>
+
+          <pre>
+            <code data-trim data-noescape>
+              var anon = function() {
+                alert('I am anonymous');
+              };
+
+              anon();
+            </code>
+          </pre>
         </section>
         <section>
           <h4>ES6 Array functions</h4>
