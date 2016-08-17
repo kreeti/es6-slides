@@ -625,9 +625,100 @@
           </pre>
         </section>
         <section>
+          <h4>Asynchrony (computer programming)</h4>
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            Asynchrony, in computer programming, refers to the occurrence of events independently of the main program flow and ways to deal with such events. These may be "outside" events such as the arrival of signals, or actions instigated by a program that take place concurrently with program execution, without the program blocking to wait for results.
+          </p>
+
+           <pre>
+             <code data-trim data-noescape>
+               $("#btn_1").click(function() {
+                 alert("Btn 1 Clicked");
+               });
+             </code>
+           </pre>
         </section>
         <section>
-        </section>
+          <section>
+          <h4>Callback</h4>
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+           We can pass functions around like variables and return them in functions and use them in other functions. When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. In other words, we aren’t passing the function with the trailing pair of executing parenthesis () like we do when we are executing a function.
+           <pre>
+             <code data-trim data-noescape>
+               $(".fetchRecord").click(function() {
+                 alert("Requested to fetch record.");
+               });
+             </code>
+           </pre>
+          </section>
+          <section>
+            <h4>Promise</h4>
+            <p align="left" style="padding-top: 20px; font-size: 25px">
+              Promise object is used for asynchronous computations. A Promise represents a single asynchronous operation that hasn't completed yet, but is expected in the future.
+            </p>
+              <pre>
+                <code data-trim data-noescape>
+                 'use strict';
+var promiseCount = 0;
+
+function testPromise() {
+    var thisPromiseCount = ++promiseCount;
+
+    var log = document.getElementById('log');
+    log.insertAdjacentHTML('beforeend', thisPromiseCount +
+        ') Started (<small>Sync code started</small>)<br/>');
+
+    // We make a new promise: we promise a numeric count of this promise, starting from 1 (after waiting 3s)
+    var p1 = new Promise(
+        // The resolver function is called with the ability to resolve or
+        // reject the promise
+        function(resolve, reject) {
+            log.insertAdjacentHTML('beforeend', thisPromiseCount +
+                ') Promise started (<small>Async code started</small>)<br/>');
+            // This is only an example to create asynchronism
+            window.setTimeout(
+                function() {
+                    // We fulfill the promise !
+                    resolve(thisPromiseCount);
+                }, Math.random() * 2000 + 1000);
+        }
+    );
+
+    // We define what to do when the promise is resolved/fulfilled with the then() call,
+    // and the catch() method defines what to do if the promise is rejected.
+    p1.then(
+        // Log the fulfillment value
+        function(val) {
+            log.insertAdjacentHTML('beforeend', val +
+                ') Promise fulfilled (<small>Async code terminated</small>)<br/>');
+        })
+    .catch(
+        // Log the rejection reason
+        function(reason) {
+            console.log('Handle rejected promise ('+reason+') here.');
+        });
+
+    log.insertAdjacentHTML('beforeend', thisPromiseCount +
+        ') Promise made (<small>Sync code terminated</small>)<br/>');
+}
+                </code>
+              </pre>
+          </section>
+          <section>
+            <h4>References</h4>
+            <ul align="left" style="padding-top: 20px; font-size: 25px">
+              <li>https://en.wikipedia.org/wiki/Side_effect_%28computer_science%29</li>
+              <li>https://en.wikipedia.org/wiki/Pure_function</li>
+              <li>http://eloquentjavascript.net/05_higher_order.html</li>
+              <li>https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions</li>
+              <li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this</li>
+              <li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this</li>
+              <li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model</li>
+              <li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain</li>
+              <li>https://en.wikipedia.org/wiki/Asynchrony_%28computer_programming%29</li>
+              <li>http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/</li>
+            </ul>
+          </section>
       </div>
     </div>
 
