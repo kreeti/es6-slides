@@ -25,23 +25,23 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h4>Mr. Surendra Singhi</h4>
-          <p>CEO/ Founder at Kreeti Technologies</p>
-          <p>Arizona State University<br>Master of Science, Computer Science<br>2004-2005</p>
-          <p>B.M.S College of Engineering<br>Bachelor of Engineering, Computer Science<br>1999-2003</p>
+          <h4>Surendra Singhi</h4>
+          <p>CEO & Founder at Kreeti Technologies</p>
         </section>
-
         <section>
           <h4>Functional Programing</h4>
           <p align="left" style="padding-top: 20px;">
-            In computer science, functional programming is a programming paradigm—a style of building the structure and elements of computer programs—that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+            It is a programming paradigm—a style of building the structure and elements of computer programs—that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+          </p>
+          <p align="left" style="padding-top: 20px;">
+            In mathematics, a function[1] is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.
           </p>
         </section>
 
         <section>
           <h4>Side effect</h4>
           <p align="left" style="padding-top: 20px;">
-            In computer science, a function or expression is said to have a side effect if it modifies some state or has an observable interaction with calling functions or the outside world.
+            A function or expression is said to have a side effect if it modifies some state or has an observable interaction with calling functions or the outside world.
           </p>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             For example, this function has no side effects. Its result depends only on its input arguments, and nothing about the state of the program or its environment changes when it is called:
@@ -68,7 +68,7 @@
           <h4>Pure function</h4>
 
           <p align="left" style="padding-top: 20px; font-size: 25px">
-            In computer programming, a function may be considered a pure function if both of the following statements about the function hold:
+             In programming, a function may be considered a pure function if both of the following statements about the function hold:
           </p>
 
           <ul style="font-size: 25px">
@@ -85,7 +85,7 @@
               var values = { a: 1 };
 
               function pureFunction ( a ) {
-                var b = 1;
+                var b = 2;
                 a = a * b + 2;
 
                 return a;
@@ -133,15 +133,7 @@
               // sort by value
 
               items.sort(function (a, b) {
-                if (a.value > b.value) {
-                  return 1;
-                }
-
-                if (a.value < b.value) {
-                  return -1;
-                }
-
-                return 0;
+                return a.value > b.value;
               });
             </code>
           </pre>
@@ -221,7 +213,7 @@
 
           <pre>
             <code data-trim data-noescape>
-              var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
+              var kvArray = [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}];
 
               var reformattedArray = kvArray.map(function(obj){
                 var rObj = {};
@@ -229,8 +221,8 @@
                 return rObj;
               });
 
-              // reformattedArray is now [{1:10}, {2:20}, {3:30}],
-              // kvArray is still [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}]
+              // reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
+              // kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
             </code>
           </pre>
         </section>
@@ -317,12 +309,12 @@
           </pre>
         </section>
         <section>
-          <h4>Arrow function</h4>
+          <h4>Arrow functions contd...</h4>
           <pre>
             <code data-trim data-noescape>
               var numbers = [1, 4, 9];
-              var roots = numbers.map(() => Math.sqrt);
-              // roots is now [1, 2, 3], numbers is still [1, 4, 9]
+              var doubled = numbers.map(x => 2 * x);
+              // doubled is now [2, 8, 18], numbers is still [1, 4, 9]
             </code>
           </pre>
 
@@ -336,8 +328,8 @@
                 return rObj;
               });
 
-              // reformattedArray is now [{1:10}, {2:20}, {3:30}],
-              // kvArray is still [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}]
+              // reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
+              // kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
             </code>
           </pre>
         </section>
@@ -363,7 +355,7 @@
           <h4>Function context</h4>
           <h5>Simple call</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-            Inside a function, the value of this depends on how the function is called. In this case, the value of this is not set by the call. Since the code is not in strict mode, the value of this must always be an object so it defaults to the global object.
+            Inside a function, the value of this depends on how the function is called. In this case, the value of this is not set by the call. The value of this must always be an object so it defaults to the global object.
           </p>
           <pre>
             <code data-trim data-noescape>
@@ -447,7 +439,7 @@
                 return this.a + this.b + c + d;
               }
 
-              var o = {a:1, b:3};
+              var o = {a: 1, b: 3};
 
               // The first parameter is the object to use as
               // 'this', subsequent parameters are passed as
@@ -485,6 +477,12 @@
           <p align="left" style="padding-top: 20px; font-size: 25px">
            JavaScript is an object-based language based on prototypes, rather than being class-based. Because of this different basis, it can be less apparent how JavaScript allows you to create hierarchies of objects and to have inheritance of properties and their values.
           </p>
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+	    JavaScript only has objects. A prototype-based language has the notion of a prototypical object, an object used as a template from which to get the initial properties for a new object. Any object can specify its own properties, either when you create it or at run time. In addition, any object can be associated as the prototype for another object, allowing the second object to share the first object's properties.
+          </p>
+        </section>
+        <section>
+          <h5>Creating Object Hierarchy in JS</h5>
           <pre>
             <code data-trim data-noescape>
               function Employee() {
@@ -525,44 +523,7 @@
           </pre>
         </section>
         <section>
-          <h4>Comparison of class-based and prototype-based object systems</h4>
-          <table  align="left" style="padding-top: 20px; font-size: 20px">
-            <thead>
-              <tr>
-                <th scope="col">Class-based</th>
-                <th scope="col">Prototype-based</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Class and instance are distinct entities.</td>
-                <td>All objects can inherit from another object.</td>
-              </tr>
-              <tr>
-                <td>Define a class with a class definition; instantiate a class with constructor methods.</td>
-                <td>Define and create a set of objects with constructor functions.</td>
-              </tr>
-              <tr>
-                <td>Create a single object with the <code>new</code> operator.</td>
-                <td>Same.</td>
-              </tr>
-              <tr>
-                <td>Construct an object hierarchy by using class definitions to define subclasses of existing classes.</td>
-                <td>Construct an object hierarchy by assigning an object as the prototype associated with a constructor function.</td>
-              </tr>
-              <tr>
-                <td>Inherit properties by following the class chain.</td>
-                <td>Inherit properties by following the prototype chain.</td>
-              </tr>
-              <tr>
-                <td>Class definition specifies <em>all</em> properties of all instances of a class. Cannot add properties dynamically at run time.</td>
-                <td>Constructor function or prototype specifies an <em>initial set</em> of properties. Can add or remove properties dynamically to individual objects or to the entire set of objects.</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <section>
-          <h4>prototype chain</h4>
+          <h4>Prototype chain</h4>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             JavaScript objects are dynamic bags of properties (referred to as own properties). JavaScript objects have a link to a prototype object. When trying to access a property of an object, the property will not only be sought on the object but on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain is reached.
           </p>
@@ -642,7 +603,7 @@
           <section>
           <h4>Callback</h4>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-           We can pass functions around like variables and return them in functions and use them in other functions. When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. In other words, we aren’t passing the function with the trailing pair of executing parenthesis () like we do when we are executing a function.
+            When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. In other words, we aren’t passing the function with the trailing pair of executing parenthesis () like we do when we are executing a function.
            <pre>
              <code data-trim data-noescape>
                $(".fetchRecord").click(function() {
