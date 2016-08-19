@@ -47,22 +47,18 @@
           <p align="left" style="padding-top: 20px; font-size: 25px">
             For example, this function has no side effects. Its result depends only on its input arguments, and nothing about the state of the program or its environment changes when it is called:
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
               int square(int x) { return x * x; }
-            </code>
-          </pre>
+          </code></pre>
 
           <p align="left" style="padding-top: 20px; font-size: 25px">
             In contrast, calling these functions will give you different results depending upon the order in which you call them, because they change something about the state of the computer:
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 int n = 0;
 int next_n() { return n++; }
 void set_n(int newN) { n = newN; }
-            </code>
-          </pre>
+          </code></pre>
 
         </section>
 
@@ -113,7 +109,7 @@ function greaterThan(n) {
 var greaterThan10 = greaterThan(10);
 console.log(greaterThan10(11));
 // → true
-            </code></pre>
+          </code></pre>
 
           <pre><code data-trim data-noescape>
 var items = [
@@ -127,7 +123,7 @@ var items = [
 
 // sort by value
 items.sort(function (a, b) { return a.value > b.value; });
-            </code></pre>
+          </code></pre>
         </section>
         <section>
           <h4>Anonymous function</h4>
@@ -138,36 +134,31 @@ items.sort(function (a, b) { return a.value > b.value; });
 
           <p align="left" style="padding-top: 20px; font-size: 25px">Normal function definition:</p>
 
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 function hello() {
  alert('Hello world');
 }
 
 hello();
-            </code>
-          </pre>
+          </code></pre>
 
           <p align="left" style="padding-top: 20px; font-size: 25px">Anonymous function definition:</p>
 
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 var anon = function() {
  alert('I am anonymous');
 };
 
 anon();
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
-          <h4>this in JS</h4>
+          <h4><span style="text-transform:none"><em>this</em></span> in JS</h4>
           <h5>Global context</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             In the global execution context (outside of any function), this refers to the global object
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 console.log(this.document === document); // true
 
 // In web browsers, the window object is also the global object:
@@ -175,31 +166,27 @@ console.log(this === window); // true
 
 this.a = 37;
 console.log(window.a); // 37
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h4>Function context</h4>
           <h5>Simple call</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-            Inside a function, the value of this depends on how the function is called. In this case, the value of this is not set by the call. The value of this must always be an object so it defaults to the global object.
+            Inside a function, the value of <em>this</em> depends on how the function is called. In this case, the value of <em>this</em> is not set by the call. The value of <em>this</em> must always be an object so it defaults to the global object.
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 function f1() { return this; }
 
 f1() === window; // global object
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h5>Object method</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-            When a function is called as a method of an object, its this is set to the object the method is called on.
-            In the following example, when o.f() is invoked, inside the function this is bound to the o object.
+            When a function is called as a method of an object, its <em>this</em> is set to the object the method is called on.
+            In the following example, when <em>o.f()</em> is invoked, inside the function <em>this</em> is bound to the o object.
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 var o = {
  prop: 37,
  f: function() {
@@ -208,16 +195,14 @@ var o = {
 };
 
 console.log(o.f()); // logs 37
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h5>As a constructor</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-           When a function is used as a constructor (with the new keyword), its this is bound to the new object being constructed.
+           When a function is used as a constructor (with the new keyword), its <em>this</em> is bound to the new object being constructed.
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 /*
 * Constructors work like this:
 *
@@ -252,8 +237,7 @@ function C2() {
 
 o = new C2();
 console.log(o.a); // logs 38
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h5>call <span style="text-transform:none">vs.</span> apply</h5>
@@ -261,8 +245,7 @@ console.log(o.a); // logs 38
            The value of <em>this</em> keyword can be explicitly bound to a particular object during a function call by using the <em>call</em> or <em>apply</em>
 		methods that all functions inherit from <em>Function.prototype</em>.
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 function add(c, d) {
  return this.a + this.b + c + d;
 }
@@ -278,16 +261,14 @@ add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
 // 'this', the second is an array whose
 // members are used as the arguments in the function call
 add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h5>bind method</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-           Calling f.bind(someObject) creates a new function with the same body and scope as f, but where <em>this</em> occurs in the original function, in the new function it is permanently bound to the first argument of bind, regardless of how the function is being used.
+           Calling <em>f.bind(someObject)</em> creates a new function with the same body and scope as <em>f</em>, but where <em>this</em> occurs in the original function, in the new function it is permanently bound to the first argument of bind, regardless of how the function is being used.
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 function f() {
  return this.a;
 }
@@ -297,8 +278,7 @@ console.log(g()); // azerty
 
 var o = { a:37, f:f, g:g };
 console.log(o.f(), o.g()); // 37, azerty
-            </code>
-          </pre>
+          </code></pre>
         </section>
 	<section>
 	  <h3>Some Array Functions</h3>
@@ -308,7 +288,7 @@ console.log(o.f(), o.g()); // 37, azerty
 
           <pre><code data-trim data-noescape>
 arr.forEach(callback[, thisArg])
-            </code></pre>
+          </code></pre>
 
           <p align="left" style="padding-top: 20px; font-size: 25px">
             callback: Function to execute for each element.<br>
@@ -335,26 +315,22 @@ obj.count
 // 3
 obj.sum
 // 16
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h5>Iterating using map</h5>
           <p align="left" style="padding-top: 20px; font-size: 20px">
-            The map() method creates a new array with the results of calling a provided function on every element in this array.
-            map calls a provided callback function once for each element in an array, in order, and constructs a new array from the results
+            The <em>map()</em> method creates a new array with the results of calling a provided function on every element in this array.
+            <em>map</em> calls a provided callback function once for each element in an array, in order, and constructs a new array from the results
           </p>
 
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 var numbers = [1, 4, 9];
 var roots = numbers.map(Math.sqrt);
 // roots is now [1, 2, 3], numbers is still [1, 4, 9]
-            </code>
-          </pre>
+          </code></pre>
 
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 var kvArray = [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}];
 
 var reformattedArray = kvArray.map(function(obj){
@@ -365,23 +341,20 @@ var reformattedArray = kvArray.map(function(obj){
 
 // reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
 // kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h5>reduce function</h5>
 
           <p align="left" style="padding-top: 20px; font-size: 25px">
-            The reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
+            The <em>reduce()</em> method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
           </p>
 
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 [0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
  return previousValue + currentValue;
 });
-            </code>
-          </pre>
+          </code></pre>
 
           <table style="padding-top: 20px; font-size: 15px">
             <thead>
@@ -435,8 +408,7 @@ var reformattedArray = kvArray.map(function(obj){
           <p align="left" style="padding-top: 20px; font-size: 25px">
             An arrow function expression has a shorter syntax compared to function expressions and lexically binds the this value
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 (param1, param2, …, paramN) => { statements }
 (param1, param2, …, paramN) => expression
 // equivalent to:  => { return expression; }
@@ -447,21 +419,17 @@ singleParam => { statements }
 
 // A function with no parameters requires parentheses:
 () => { statements }
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h4>Arrow functions contd...</h4>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 var numbers = [1, 4, 9];
 var doubled = numbers.map(x => 2 * x);
 // doubled is now [2, 8, 18], numbers is still [1, 4, 9]
-            </code>
-          </pre>
+          </code></pre>
 
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
 
 var reformattedArray = kvArray.map((obj) => {
@@ -472,8 +440,7 @@ var reformattedArray = kvArray.map((obj) => {
 
 // reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
 // kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h5>Prototype based programing using JS</h5>
@@ -487,10 +454,9 @@ var reformattedArray = kvArray.map((obj) => {
         <section>
           <h4>Prototype chain</h4>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-            JavaScript objects are dynamic bags of properties (referred to as own properties). JavaScript objects have a link to a prototype object. When trying to access a property of an object, the property will not only be sought on the object but on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain is reached.
+            JavaScript objects are dynamic bags of properties (referred to as own properties). JavaScript objects have a link to a <em>prototype object</em>. When trying to access a property of an object, the property will not only be sought on the object but on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain is reached.
           </p>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 var o = {a: 1};
 
 // The newly created object o has Object.prototype as its [[Prototype]]
@@ -514,13 +480,11 @@ function f(){
 // Functions inherit from Function.prototype
 // (which has methods like call, bind, etc.)
 // f ---> Function.prototype ---> Object.prototype ---> null
-            </code>
-          </pre>
-        </section>
+</code></pre>
+</section>
         <section>
           <h5>Creating Object Hierarchy in JS</h5>
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 function Employee() {
  this.name = "";
  this.dept = "general";
@@ -555,67 +519,38 @@ function Engineer() {
 }
 
 Engineer.prototype = Object.create(WorkerBee.prototype);
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
-          <h4>Array destructuring</h4>
-          <pre>
-            <code data-trim data-noescape>
+          <h4>Array & Object destructuring</h4>
+          <pre><code data-trim data-noescape>
 var foo = ["one", "two", "three"];
 var [one, two, three] = foo;
 console.log(one); // "one"
 console.log(two); // "two"
 console.log(three); // "three"
-            </code>
-          </pre>
-          <pre>
-            <code data-trim data-noescape>
+          </code></pre>
+          <pre><code data-trim data-noescape>
 var a, b;
 
 [a, b] = [1, 2];
 console.log(a); // 1
 console.log(b); // 2
-            </code>
-          </pre>
-          <pre>
-            <code data-trim data-noescape>
-var a, b;
-
-[a=5, b=7] = [1];
-console.log(a); // 1
-console.log(b); // 7
-            </code>
-          </pre>
-        </section>
-        <section>
-          <h4>Object destructuring</h4>
-          <pre>
-            <code data-trim data-noescape>
+          </code></pre>
+          <pre><code data-trim data-noescape>
 var o = { p: 42, q: true };
 var { p, q } = o;
 
 console.log(p); // 42
 console.log(q); // true
-            </code>
-          </pre>
-          <pre>
-            <code data-trim data-noescape>
-              var o = {p: 42, q: true};
+          </code></pre>
+          <pre><code data-trim data-noescape>
+var o = {p: 42, q: true};
 var {p: foo, q: bar} = o;
 
 console.log(foo); // 42
 console.log(bar); // true
-            </code>
-          </pre>
-          <pre>
-            <code data-trim data-noescape>
-var {a=10, b=5} = {a: 3};
-
-console.log(a); // 3
-console.log(b); // 5
-            </code>
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h4>Asynchrony (computer programming)</h4>
@@ -623,33 +558,28 @@ console.log(b); // 5
             Asynchrony, in computer programming, refers to the occurrence of events independently of the main program flow and ways to deal with such events. These may be "outside" events such as the arrival of signals, or actions instigated by a program that take place concurrently with program execution, without the program blocking to wait for results.
           </p>
 
-           <pre>
-             <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 $("#btn_1").click(function() {
  alert("Btn 1 Clicked");
 });
-             </code>
-           </pre>
+          </code></pre>
         </section>
         <section>
           <h4>Callback</h4>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-            When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. In other words, we aren’t passing the function with the trailing pair of executing parenthesis () like we do when we are executing a function.</p>
-           <pre>
-             <code data-trim data-noescape>
+            When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. In other words, we aren’t passing the function with the trailing pair of executing parenthesis <em>()</em> like we do when we are executing a function.</p>
+          <pre><code data-trim data-noescape>
 $(".fetchRecord").click(function() {
  alert("Requested to fetch record.");
 });
-             </code>
-           </pre>
+          </code></pre>
           </section>
           <section>
             <h4>Promise</h4>
             <p align="left" style="padding-top: 20px; font-size: 25px">
               Promise object is used for asynchronous computations. A Promise represents a single asynchronous operation that hasn't completed yet, but is expected in the future.
             </p>
-              <pre>
-                <code data-trim data-noescape>
+            <pre><code data-trim data-noescape>
 'use strict';
 var promiseCount = 0;
 
@@ -691,8 +621,7 @@ p1.then(
    log.insertAdjacentHTML('beforeend', thisPromiseCount +
    ') Promise made (<small>Sync code terminated</small>)<br/>');
 }
-                </code>
-              </pre>
+            </code></pre>
           </section>
           <section>
             <h4>Promise.prototype.then()</h4>
@@ -700,8 +629,7 @@ p1.then(
               The <em>then()</em> method returns a Promise.
 	      It takes two arguments: callback functions for the success and failure cases of the Promise.
             </p>
-            <pre>
-              <code>
+            <pre><code>
 p.then(onFulfilled, onRejected);
 
 p.then(function(value) {
@@ -709,11 +637,9 @@ p.then(function(value) {
 }, function(reason) {
  // rejection
 });
-              </code>
-            </pre>
+            </code></pre>
 
-            <pre>
-              <code>
+            <pre><code>
 var p2 = new Promise(function(resolve, reject) {
  resolve(1);
 });
@@ -728,16 +654,14 @@ p2.then(function(value) {
 p2.then(function(value) {
  console.log(value); // 1
 });
-              </code>
-            </pre>
+            </code></pre>
           </section>
           <section>
             <h4>Promise.prototype.catch()</h4>
             <p align="left" style="padding-top: 20px; font-size: 25px">
-              The catch() method returns a Promise and deals with rejected cases only.
+              The <em>catch()</em> method returns a Promise and deals with rejected cases only.
             </p>
-            <pre>
-              <code>
+            <pre><code>
 var p = new Promise(function(resolve, reject) {
 });
 
@@ -746,11 +670,9 @@ p.catch(onRejected);
 p.catch(function(reason) {
  // rejection
 });
-              </code>
-            </pre>
+            </code></pre>
 
-            <pre>
-              <code>
+            <pre><code>
 var p1 = new Promise(function(resolve, reject) {
  resolve('Success');
 });
@@ -777,8 +699,7 @@ p1.then(function(value) {
 }, function () {
  console.log('Not fired due to the catch');
 });
-              </code>
-            </pre>
+            </code></pre>
           </section>
           <section>
             <h4>References</h4>
