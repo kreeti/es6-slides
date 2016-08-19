@@ -25,7 +25,8 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h4>Surendra Singhi</h4>
+          <h4>Advanced Javascript &amp; ES6</h4>
+          <h5>by Surendra Singhi</h5>
           <p>CEO & Founder at Kreeti Technologies</p>
         </section>
         <section>
@@ -34,7 +35,7 @@
             It is a programming paradigm—a style of building the structure and elements of computer programs—that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
           </p>
           <p align="left" style="padding-top: 20px;">
-            In mathematics, a function[1] is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.
+            In mathematics, a function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.
           </p>
         </section>
 
@@ -100,9 +101,8 @@ var c = pureFunction( values.a );
           <h4>Higher-order functions</h4>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
-          </p>
-          <p align="left" style="padding-top: 20px; font-size: 25px">
-            Higher-order functions allow us to abstract over actions, not just values. They come in several forms. For example, you can have functions that create new functions.
+	    <br />
+	    These allow us to abstract over actions, not just values.
           </p>
 
           <pre>
@@ -116,9 +116,7 @@ console.log(greaterThan10(11));
 // → true
             </code>
           </pre>
-        </section>
-        <section>
-          <h4>Higher-order functions</h4>
+
           <pre>
             <code data-trim data-noescape>
 var items = [
@@ -170,11 +168,11 @@ anon();
           </pre>
         </section>
         <section>
-          <h5>forEach() method</h5>
+          <h5>forEach method</h5>
 
           <pre>
             <code data-trim data-noescape>
-              arr.forEach(callback[, thisArg]
+arr.forEach(callback[, thisArg])
             </code>
           </pre>
 
@@ -208,7 +206,7 @@ obj.sum
           </pre>
         </section>
         <section>
-          <h5>Iterating using map:</h5>
+          <h5>Iterating using map</h5>
           <p align="left" style="padding-top: 20px; font-size: 20px">
             The map() method creates a new array with the results of calling a provided function on every element in this array.
             map calls a provided callback function once for each element in an array, in order, and constructs a new array from the results
@@ -238,7 +236,7 @@ var reformattedArray = kvArray.map(function(obj){
           </pre>
         </section>
         <section>
-          <h5>reduce() function</h5>
+          <h5>reduce function</h5>
 
           <p align="left" style="padding-top: 20px; font-size: 25px">
             The reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
@@ -440,7 +438,7 @@ console.log(o.a); // logs 38
           </pre>
         </section>
         <section>
-          <h5>call and apply</h5>
+          <h5>call vs. apply</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
            Where a function uses the this keyword in its body, its value can be bound to a particular object in the call using the call or apply methods that all functions inherit from Function.prototype.
           </p>
@@ -467,7 +465,7 @@ add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
         <section>
           <h5>bind method</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-           ECMAScript 5 introduced Function.prototype.bind. Calling f.bind(someObject) creates a new function with the same body and scope as f, but where this occurs in the original function, in the new function it is permanently bound to the first argument of bind, regardless of how the function is being used.
+           Calling f.bind(someObject) creates a new function with the same body and scope as f, but where this occurs in the original function, in the new function it is permanently bound to the first argument of bind, regardless of how the function is being used.
           </p>
           <pre>
             <code data-trim data-noescape>
