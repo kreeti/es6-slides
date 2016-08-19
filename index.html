@@ -57,9 +57,9 @@
           </p>
           <pre>
             <code data-trim data-noescape>
-              int n = 0;
-              int next_n() { return n++; }
-              void set_n(int newN) { n = newN; }
+int n = 0;
+int next_n() { return n++; }
+void set_n(int newN) { n = newN; }
             </code>
           </pre>
         </section>
@@ -82,17 +82,17 @@
 
           <pre>
             <code data-trim data-noescape>
-              var values = { a: 1 };
+var values = { a: 1 };
 
-              function pureFunction ( a ) {
-                var b = 2;
-                a = a * b + 2;
+function pureFunction ( a ) {
+  var b = 2;
+  a = a * b + 2;
 
-                return a;
-              }
+  return a;
+}
 
-              var c = pureFunction( values.a );
-              // `values.a` has not been modified, it's still 1
+var c = pureFunction( values.a );
+// `values.a` has not been modified, it's still 1
             </code>
           </pre>
         </section>
@@ -107,13 +107,13 @@
 
           <pre>
             <code data-trim data-noescape>
-              function greaterThan(n) {
-                return function(m) { return m > n; };
-              }
+function greaterThan(n) {
+  return function(m) { return m > n; };
+}
 
-              var greaterThan10 = greaterThan(10);
-              console.log(greaterThan10(11));
-              // → true
+var greaterThan10 = greaterThan(10);
+console.log(greaterThan10(11));
+// → true
             </code>
           </pre>
         </section>
@@ -121,20 +121,20 @@
           <h4>Higher-order functions</h4>
           <pre>
             <code data-trim data-noescape>
-              var items = [
-              { name: 'Edward', value: 21 },
-              { name: 'Sharpe', value: 37 },
-              { name: 'And', value: 45 },
-              { name: 'The', value: -12 },
-              { name: 'Magnetic' },
-              { name: 'Zeros', value: 37 }
-              ];
+var items = [
+{ name: 'Edward', value: 21 },
+{ name: 'Sharpe', value: 37 },
+{ name: 'And', value: 45 },
+{ name: 'The', value: -12 },
+{ name: 'Magnetic' },
+{ name: 'Zeros', value: 37 }
+];
 
-              // sort by value
+// sort by value
 
-              items.sort(function (a, b) {
-                return a.value > b.value;
-              });
+items.sort(function (a, b) {
+  return a.value > b.value;
+});
             </code>
           </pre>
         </section>
@@ -149,11 +149,11 @@
 
           <pre>
             <code data-trim data-noescape>
-              function hello() {
-                alert('Hello world');
-              }
+function hello() {
+ alert('Hello world');
+}
 
-              hello();
+hello();
             </code>
           </pre>
 
@@ -161,11 +161,11 @@
 
           <pre>
             <code data-trim data-noescape>
-              var anon = function() {
-                alert('I am anonymous');
-              };
+var anon = function() {
+ alert('I am anonymous');
+};
 
-              anon();
+anon();
             </code>
           </pre>
         </section>
@@ -185,10 +185,11 @@
 
           <pre>
             <code data-trim data-noescape>
-              function Counter() {
+function Counter() {
   this.sum = 0;
   this.count = 0;
 }
+
 Counter.prototype.add = function(array) {
   array.forEach(function(entry) {
     this.sum += entry;
@@ -215,24 +216,24 @@ obj.sum
 
           <pre>
             <code data-trim data-noescape>
-              var numbers = [1, 4, 9];
-              var roots = numbers.map(Math.sqrt);
-              // roots is now [1, 2, 3], numbers is still [1, 4, 9]
+var numbers = [1, 4, 9];
+var roots = numbers.map(Math.sqrt);
+// roots is now [1, 2, 3], numbers is still [1, 4, 9]
             </code>
           </pre>
 
           <pre>
             <code data-trim data-noescape>
-              var kvArray = [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}];
+var kvArray = [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}];
 
-              var reformattedArray = kvArray.map(function(obj){
-                var rObj = {};
-                rObj[obj.key] = obj.value;
-                return rObj;
-              });
+var reformattedArray = kvArray.map(function(obj){
+ var rObj = {};
+ rObj[obj.key] = obj.value;
+ return rObj;
+});
 
-              // reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
-              // kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
+// reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
+// kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
             </code>
           </pre>
         </section>
@@ -245,9 +246,9 @@ obj.sum
 
           <pre>
             <code data-trim data-noescape>
-              [0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
-                return previousValue + currentValue;
-              });
+[0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
+ return previousValue + currentValue;
+});
             </code>
           </pre>
 
@@ -305,16 +306,16 @@ obj.sum
           </p>
           <pre>
             <code data-trim data-noescape>
-              (param1, param2, …, paramN) => { statements }
-              (param1, param2, …, paramN) => expression
-              // equivalent to:  => { return expression; }
+(param1, param2, …, paramN) => { statements }
+(param1, param2, …, paramN) => expression
+// equivalent to:  => { return expression; }
 
-              // Parentheses are optional when there's only one parameter:
-              (singleParam) => { statements }
-              singleParam => { statements }
+// Parentheses are optional when there's only one parameter:
+(singleParam) => { statements }
+singleParam => { statements }
 
-              // A function with no parameters requires parentheses:
-              () => { statements }
+// A function with no parameters requires parentheses:
+() => { statements }
             </code>
           </pre>
         </section>
@@ -322,24 +323,24 @@ obj.sum
           <h4>Arrow functions contd...</h4>
           <pre>
             <code data-trim data-noescape>
-              var numbers = [1, 4, 9];
-              var doubled = numbers.map(x => 2 * x);
-              // doubled is now [2, 8, 18], numbers is still [1, 4, 9]
+var numbers = [1, 4, 9];
+var doubled = numbers.map(x => 2 * x);
+// doubled is now [2, 8, 18], numbers is still [1, 4, 9]
             </code>
           </pre>
 
           <pre>
             <code data-trim data-noescape>
-              var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
+var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
 
-              var reformattedArray = kvArray.map((obj) => {
-                var rObj = {};
-                rObj[obj.key] = obj.value;
-                return rObj;
-              });
+var reformattedArray = kvArray.map((obj) => {
+ var rObj = {};
+ rObj[obj.key] = obj.value;
+ return rObj;
+});
 
-              // reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
-              // kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
+// reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
+// kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
             </code>
           </pre>
         </section>
@@ -351,13 +352,13 @@ obj.sum
           </p>
           <pre>
             <code data-trim data-noescape>
-              console.log(this.document === document); // true
+console.log(this.document === document); // true
 
-              // In web browsers, the window object is also the global object:
-              console.log(this === window); // true
+// In web browsers, the window object is also the global object:
+console.log(this === window); // true
 
-              this.a = 37;
-              console.log(window.a); // 37
+this.a = 37;
+console.log(window.a); // 37
             </code>
           </pre>
         </section>
@@ -369,9 +370,9 @@ obj.sum
           </p>
           <pre>
             <code data-trim data-noescape>
-              function f1() { return this; }
+function f1() { return this; }
 
-              f1() === window; // global object
+f1() === window; // global object
             </code>
           </pre>
         </section>
@@ -383,14 +384,14 @@ obj.sum
           </p>
           <pre>
             <code data-trim data-noescape>
-              var o = {
-                prop: 37,
-                f: function() {
-                  return this.prop;
-                }
-              };
+var o = {
+ prop: 37,
+ f: function() {
+ return this.prop;
+ }
+};
 
-              console.log(o.f()); // logs 37
+console.log(o.f()); // logs 37
             </code>
           </pre>
         </section>
@@ -401,40 +402,40 @@ obj.sum
           </p>
           <pre>
             <code data-trim data-noescape>
-              /*
-              * Constructors work like this:
-              *
-              * function MyConstructor() {
-              *   // Actual function body code goes here.
-              *   // Create properties on |this| as
-              *   // desired by assigning to them.  E.g.,
-              *   this.fum = "nom";
-              *   // et cetera...
-              *
-              *   // If the function has a return statement that
-              *   // returns an object, that object will be the
-              *   // result of the |new| expression.  Otherwise,
-              *   // the result of the expression is the object
-              *   // currently bound to |this|
-              *   // (i.e., the common case most usually seen).
-              * }
-              */
+/*
+* Constructors work like this:
+*
+* function MyConstructor() {
+*   // Actual function body code goes here.
+*   // Create properties on |this| as
+*   // desired by assigning to them.  E.g.,
+*   this.fum = "nom";
+*   // et cetera...
+*
+*   // If the function has a return statement that
+*   // returns an object, that object will be the
+*   // result of the |new| expression.  Otherwise,
+*   // the result of the expression is the object
+*   // currently bound to |this|
+*   // (i.e., the common case most usually seen).
+* }
+*/
 
-              function C() {
-                this.a = 37;
-              }
+function C() {
+ this.a = 37;
+}
 
-              var o = new C();
-              console.log(o.a); // logs 37
+var o = new C();
+console.log(o.a); // logs 37
 
 
-              function C2() {
-                this.a = 37;
-                return { a:38 };
-              }
+function C2() {
+ this.a = 37;
+ return { a:38 };
+}
 
-              o = new C2();
-              console.log(o.a); // logs 38
+o = new C2();
+console.log(o.a); // logs 38
             </code>
           </pre>
         </section>
@@ -445,21 +446,21 @@ obj.sum
           </p>
           <pre>
             <code data-trim data-noescape>
-              function add(c, d) {
-                return this.a + this.b + c + d;
-              }
+function add(c, d) {
+ return this.a + this.b + c + d;
+}
 
-              var o = {a: 1, b: 3};
+var o = {a: 1, b: 3};
 
-              // The first parameter is the object to use as
-              // 'this', subsequent parameters are passed as
-              // arguments in the function call
-              add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
+// The first parameter is the object to use as
+// 'this', subsequent parameters are passed as
+// arguments in the function call
+add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
 
-              // The first parameter is the object to use as
-              // 'this', the second is an array whose
-              // members are used as the arguments in the function call
-              add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
+// The first parameter is the object to use as
+// 'this', the second is an array whose
+// members are used as the arguments in the function call
+add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
             </code>
           </pre>
         </section>
@@ -470,15 +471,15 @@ obj.sum
           </p>
           <pre>
             <code data-trim data-noescape>
-              function f() {
-                return this.a;
-              }
+function f() {
+ return this.a;
+}
 
-              var g = f.bind({ a: "azerty" });
-              console.log(g()); // azerty
+var g = f.bind({ a: "azerty" });
+console.log(g()); // azerty
 
-              var o = { a:37, f:f, g:g };
-              console.log(o.f(), o.g()); // 37, azerty
+var o = { a:37, f:f, g:g };
+console.log(o.f(), o.g()); // 37, azerty
             </code>
           </pre>
         </section>
@@ -495,40 +496,40 @@ obj.sum
           <h5>Creating Object Hierarchy in JS</h5>
           <pre>
             <code data-trim data-noescape>
-              function Employee() {
-                this.name = "";
-                this.dept = "general";
-              }
+function Employee() {
+ this.name = "";
+ this.dept = "general";
+}
 
-              function Manager() {
-                Employee.call(this);
-                this.reports = [];
-              }
+function Manager() {
+ Employee.call(this);
+ this.reports = [];
+}
 
-              Manager.prototype = Object.create(Employee.prototype);
+Manager.prototype = Object.create(Employee.prototype);
 
-              function WorkerBee() {
-                Employee.call(this);
-                this.projects = [];
-              }
+function WorkerBee() {
+ Employee.call(this);
+ this.projects = [];
+}
 
-              WorkerBee.prototype = Object.create(Employee.prototype);
+WorkerBee.prototype = Object.create(Employee.prototype);
 
-              function SalesPerson() {
-                WorkerBee.call(this);
-                this.dept = "sales";
-                this.quota = 100;
-              }
+function SalesPerson() {
+ WorkerBee.call(this);
+ this.dept = "sales";
+ this.quota = 100;
+}
 
-              SalesPerson.prototype = Object.create(WorkerBee.prototype);
+SalesPerson.prototype = Object.create(WorkerBee.prototype);
 
-              function Engineer() {
-                WorkerBee.call(this);
-                this.dept = "engineering";
-                this.machine = "";
-              }
+function Engineer() {
+ WorkerBee.call(this);
+ this.dept = "engineering";
+ this.machine = "";
+}
 
-              Engineer.prototype = Object.create(WorkerBee.prototype);
+Engineer.prototype = Object.create(WorkerBee.prototype);
             </code>
           </pre>
         </section>
@@ -539,29 +540,29 @@ obj.sum
           </p>
           <pre>
             <code data-trim data-noescape>
-              var o = {a: 1};
+var o = {a: 1};
 
-              // The newly created object o has Object.prototype as its [[Prototype]]
-              // o has no own property named 'hasOwnProperty'
-              // hasOwnProperty is an own property of Object.prototype.
-              // So o inherits hasOwnProperty from Object.prototype
-              // Object.prototype has null as its prototype.
-              // o ---> Object.prototype ---> null
+// The newly created object o has Object.prototype as its [[Prototype]]
+// o has no own property named 'hasOwnProperty'
+// hasOwnProperty is an own property of Object.prototype.
+// So o inherits hasOwnProperty from Object.prototype
+// Object.prototype has null as its prototype.
+// o ---> Object.prototype ---> null
 
-              var a = ["yo", "whadup", "?"];
+var a = ["yo", "whadup", "?"];
 
-               // Arrays inherit from Array.prototype
-              // (which has methods like indexOf, forEach, etc.)
-              // The prototype chain looks like:
-              // a ---> Array.prototype ---> Object.prototype ---> null
+// Arrays inherit from Array.prototype
+// (which has methods like indexOf, forEach, etc.)
+// The prototype chain looks like:
+// a ---> Array.prototype ---> Object.prototype ---> null
 
-               function f(){
-                 return 2;
-               }
+function f(){
+ return 2;
+}
 
-              // Functions inherit from Function.prototype
-              // (which has methods like call, bind, etc.)
-              // f ---> Function.prototype ---> Object.prototype ---> null
+// Functions inherit from Function.prototype
+// (which has methods like call, bind, etc.)
+// f ---> Function.prototype ---> Object.prototype ---> null
             </code>
           </pre>
         </section>
@@ -569,29 +570,29 @@ obj.sum
           <h4>Array destructuring</h4>
           <pre>
             <code data-trim data-noescape>
-              var foo = ["one", "two", "three"];
-              var [one, two, three] = foo;
-              console.log(one); // "one"
-              console.log(two); // "two"
-              console.log(three); // "three"
+var foo = ["one", "two", "three"];
+var [one, two, three] = foo;
+console.log(one); // "one"
+console.log(two); // "two"
+console.log(three); // "three"
             </code>
           </pre>
           <pre>
             <code data-trim data-noescape>
-              var a, b;
+var a, b;
 
-              [a, b] = [1, 2];
-              console.log(a); // 1
-              console.log(b); // 2
+[a, b] = [1, 2];
+console.log(a); // 1
+console.log(b); // 2
             </code>
           </pre>
           <pre>
             <code data-trim data-noescape>
-              var a, b;
+var a, b;
 
-              [a=5, b=7] = [1];
-              console.log(a); // 1
-              console.log(b); // 7
+[a=5, b=7] = [1];
+console.log(a); // 1
+console.log(b); // 7
             </code>
           </pre>
         </section>
@@ -599,7 +600,7 @@ obj.sum
           <h4>Object destructuring</h4>
           <pre>
             <code data-trim data-noescape>
-              var o = { p: 42, q: true };
+var o = { p: 42, q: true };
 var { p, q } = o;
 
 console.log(p); // 42
@@ -617,7 +618,7 @@ console.log(bar); // true
           </pre>
           <pre>
             <code data-trim data-noescape>
-              var {a=10, b=5} = {a: 3};
+var {a=10, b=5} = {a: 3};
 
 console.log(a); // 3
 console.log(b); // 5
@@ -632,22 +633,21 @@ console.log(b); // 5
 
            <pre>
              <code data-trim data-noescape>
-               $("#btn_1").click(function() {
-                 alert("Btn 1 Clicked");
-               });
+$("#btn_1").click(function() {
+ alert("Btn 1 Clicked");
+});
              </code>
            </pre>
         </section>
         <section>
-          <section>
           <h4>Callback</h4>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-            When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. In other words, we aren’t passing the function with the trailing pair of executing parenthesis () like we do when we are executing a function.
+            When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. In other words, we aren’t passing the function with the trailing pair of executing parenthesis () like we do when we are executing a function.</p>
            <pre>
              <code data-trim data-noescape>
-               $(".fetchRecord").click(function() {
-                 alert("Requested to fetch record.");
-               });
+$(".fetchRecord").click(function() {
+ alert("Requested to fetch record.");
+});
              </code>
            </pre>
           </section>
@@ -658,48 +658,46 @@ console.log(b); // 5
             </p>
               <pre>
                 <code data-trim data-noescape>
-                 'use strict';
+'use strict';
 var promiseCount = 0;
 
 function testPromise() {
-    var thisPromiseCount = ++promiseCount;
+ var thisPromiseCount = ++promiseCount;
 
-    var log = document.getElementById('log');
-    log.insertAdjacentHTML('beforeend', thisPromiseCount +
-        ') Started (<small>Sync code started</small>)<br/>');
+ var log = document.getElementById('log');
+ log.insertAdjacentHTML('beforeend', thisPromiseCount +
+ ') Started (<small>Sync code started</small>)<br/>');
 
-    // We make a new promise: we promise a numeric count of this promise, starting from 1 (after waiting 3s)
-    var p1 = new Promise(
-        // The resolver function is called with the ability to resolve or
-        // reject the promise
-        function(resolve, reject) {
-            log.insertAdjacentHTML('beforeend', thisPromiseCount +
-                ') Promise started (<small>Async code started</small>)<br/>');
-            // This is only an example to create asynchronism
-            window.setTimeout(
-                function() {
-                    // We fulfill the promise !
-                    resolve(thisPromiseCount);
-                }, Math.random() * 2000 + 1000);
-        }
-    );
+ // We make a new promise: we promise a numeric count of this promise, starting from 1 (after waiting 3s)
+ var p1 = new Promise(
+ // The resolver function is called with the ability to resolve or
+ // reject the promise
+ function(resolve, reject) {
+  log.insertAdjacentHTML('beforeend', thisPromiseCount +
+  ') Promise started (<small>Async code started</small>)<br/>');
+  // This is only an example to create asynchronism
+  window.setTimeout(
+   function() {
+    // We fulfill the promise !
+    resolve(thisPromiseCount);
+   }, Math.random() * 2000 + 1000);
+ });
 
-    // We define what to do when the promise is resolved/fulfilled with the then() call,
-    // and the catch() method defines what to do if the promise is rejected.
-    p1.then(
-        // Log the fulfillment value
-        function(val) {
-            log.insertAdjacentHTML('beforeend', val +
-                ') Promise fulfilled (<small>Async code terminated</small>)<br/>');
-        })
-    .catch(
-        // Log the rejection reason
-        function(reason) {
-            console.log('Handle rejected promise ('+reason+') here.');
-        });
+// We define what to do when the promise is resolved/fulfilled with the then() call,
+// and the catch() method defines what to do if the promise is rejected.
+p1.then(
+ // Log the fulfillment value
+ function(val) {
+  log.insertAdjacentHTML('beforeend', val +
+  ') Promise fulfilled (<small>Async code terminated</small>)<br/>');
+ }).catch(
+   // Log the rejection reason
+   function(reason) {
+     console.log('Handle rejected promise ('+reason+') here.');
+   });
 
-    log.insertAdjacentHTML('beforeend', thisPromiseCount +
-        ') Promise made (<small>Sync code terminated</small>)<br/>');
+   log.insertAdjacentHTML('beforeend', thisPromiseCount +
+   ') Promise made (<small>Sync code terminated</small>)<br/>');
 }
                 </code>
               </pre>
@@ -711,13 +709,13 @@ function testPromise() {
             </p>
             <pre>
               <code>
-                p.then(onFulfilled, onRejected);
+p.then(onFulfilled, onRejected);
 
-                p.then(function(value) {
-                  // fulfillment
-                }, function(reason) {
-                  // rejection
-                });
+p.then(function(value) {
+ // fulfillment
+}, function(reason) {
+ // rejection
+});
               </code>
             </pre>
           </section>
@@ -728,20 +726,20 @@ function testPromise() {
             </p>
             <pre>
               <code>
-                var p2 = new Promise(function(resolve, reject) {
-                  resolve(1);
-                });
+var p2 = new Promise(function(resolve, reject) {
+ resolve(1);
+});
 
-                p2.then(function(value) {
-                  console.log(value); // 1
-                  return value + 1;
-                }).then(function(value) {
-                  console.log(value); // 2
-                });
+p2.then(function(value) {
+ console.log(value); // 1
+ return value + 1;
+}).then(function(value) {
+ console.log(value); // 2
+});
 
-                p2.then(function(value) {
-                  console.log(value); // 1
-                });
+p2.then(function(value) {
+ console.log(value); // 1
+});
               </code>
             </pre>
           </section>
@@ -752,14 +750,14 @@ function testPromise() {
             </p>
             <pre>
               <code>
-                var p = new Promise(function(resolve, reject) {
-                });
+var p = new Promise(function(resolve, reject) {
+});
 
-                p.catch(onRejected);
+p.catch(onRejected);
 
-                p.catch(function(reason) {
-                  // rejection
-                });
+p.catch(function(reason) {
+ // rejection
+});
               </code>
             </pre>
           </section>
@@ -767,32 +765,32 @@ function testPromise() {
             <h4>Promise.prototype.catch()</h4>
             <pre>
               <code>
-                var p1 = new Promise(function(resolve, reject) {
-                resolve('Success');
-                });
+var p1 = new Promise(function(resolve, reject) {
+ resolve('Success');
+});
 
-                p1.then(function(value) {
-                  console.log(value); // "Success!"
-                  throw 'oh, no!';
-                }).catch(function(e) {
-                  console.log(e); // "oh, no!"
-                }).then(function(){
-                  console.log('after a catch the chain is restored');
-                }, function () {
-                  console.log('Not fired due to the catch');
-                });
+p1.then(function(value) {
+ console.log(value); // "Success!"
+ throw 'oh, no!';
+}).catch(function(e) {
+ console.log(e); // "oh, no!"
+}).then(function(){
+ console.log('after a catch the chain is restored');
+}, function () {
+ console.log('Not fired due to the catch');
+});
 
-                // The following behaves the same as above
-                p1.then(function(value) {
-                  console.log(value); // "Success!"
-                  return Promise.reject('oh, no!');
-                }).catch(function(e) {
-                  console.log(e); // "oh, no!"
-                }).then(function(){
-                  console.log('after a catch the chain is restored');
-                }, function () {
-                  console.log('Not fired due to the catch');
-                });
+// The following behaves the same as above
+p1.then(function(value) {
+ console.log(value); // "Success!"
+ return Promise.reject('oh, no!');
+}).catch(function(e) {
+ console.log(e); // "oh, no!"
+}).then(function(){
+ console.log('after a catch the chain is restored');
+}, function () {
+ console.log('Not fired due to the catch');
+});
               </code>
             </pre>
           </section>
