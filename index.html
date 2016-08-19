@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>reveal.js</title>
+    <title>Advanced Javascript &amp; ES6</title>
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css">
@@ -25,10 +25,8 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h4>Advanced JavaScript & ES6</h4>
-          <h5>by Surendra Singhi</h5>
+          <h4>Surendra Singhi</h4>
           <p>CEO & Founder at Kreeti Technologies</p>
-          <p>Email: ssinghi 'at' kreeti 'dot' com</p>
         </section>
         <section>
           <h4>Functional Programing</h4>
@@ -36,7 +34,7 @@
             It is a programming paradigm—a style of building the structure and elements of computer programs—that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
           </p>
           <p align="left" style="padding-top: 20px;">
-            In mathematics, a function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.
+            In mathematics, a function[1] is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.
           </p>
         </section>
 
@@ -641,25 +639,25 @@ console.log(b); // 5
            </pre>
         </section>
         <section>
+          <section>
           <h4>Callback</h4>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. In other words, we aren’t passing the function with the trailing pair of executing parenthesis () like we do when we are executing a function.
-	  </p>
-          <pre>
+           <pre>
              <code data-trim data-noescape>
                $(".fetchRecord").click(function() {
                  alert("Requested to fetch record.");
                });
              </code>
            </pre>
-        </section>
-        <section>
-          <h4>Promise</h4>
-          <p align="left" style="padding-top: 20px; font-size: 25px">
+          </section>
+          <section>
+            <h4>Promise</h4>
+            <p align="left" style="padding-top: 20px; font-size: 25px">
               Promise object is used for asynchronous computations. A Promise represents a single asynchronous operation that hasn't completed yet, but is expected in the future.
-          </p>
-          <pre>
-            <code data-trim data-noescape>
+            </p>
+              <pre>
+                <code data-trim data-noescape>
                  'use strict';
 var promiseCount = 0;
 
@@ -703,16 +701,16 @@ function testPromise() {
     log.insertAdjacentHTML('beforeend', thisPromiseCount +
         ') Promise made (<small>Sync code terminated</small>)<br/>');
 }
-            </code>
-          </pre>
-        </section>
-        <section>
-          <h4>Promise.prototype.then()</h4>
-          <p align="left" style="padding-top: 20px; font-size: 25px">
-            The then() method returns a Promise. It takes two arguments: callback functions for the success and failure cases of the Promise.
-          </p>
-          <pre>
-            <code>
+                </code>
+              </pre>
+          </section>
+          <section>
+            <h4>Promise.prototype.then()</h4>
+            <p align="left" style="padding-top: 20px; font-size: 25px">
+              The then() method returns a Promise. It takes two arguments: callback functions for the success and failure cases of the Promise.
+            </p>
+            <pre>
+              <code>
                 p.then(onFulfilled, onRejected);
 
                 p.then(function(value) {
@@ -720,9 +718,9 @@ function testPromise() {
                 }, function(reason) {
                   // rejection
                 });
-            </code>
-          </pre>
-        </section>
+              </code>
+            </pre>
+          </section>
           <section>
             <h4>Promise.prototype.then()</h4>
             <p align="left" style="padding-top: 20px; font-size: 25px">
