@@ -277,25 +277,10 @@ arr.forEach(callback[, thisArg])
           </p>
 
           <pre><code data-trim data-noescape>
-function Counter() {
-  this.sum = 0;
-  this.count = 0;
-}
-
-Counter.prototype.add = function(array) {
-  array.forEach(function(entry) {
-    this.sum += entry;
-    ++this.count;
-  }, this);
-  // ^---- Note
-};
-
-var obj = new Counter();
-obj.add([2, 5, 9]);
-obj.count
-// 3
-obj.sum
-// 16
+var a = ["a", "b", "c"];
+a.forEach(function(entry) {
+  console.log(entry);
+});
           </code></pre>
         </section>
         <section>
@@ -561,47 +546,16 @@ $(".fetchRecord").click(function() {
               Promise object is used for asynchronous computations. A Promise represents a single asynchronous operation that hasn't completed yet, but is expected in the future.
             </p>
             <pre><code data-trim data-noescape>
-'use strict';
-var promiseCount = 0;
+var promise = new Promise(function(resolve, reject) {
+  resolve(1);
+});
 
-function testPromise() {
- var thisPromiseCount = ++promiseCount;
-
- var log = document.getElementById('log');
- log.insertAdjacentHTML('beforeend', thisPromiseCount +
- ') Started (<small>Sync code started</small>)<br/>');
-
- // We make a new promise: we promise a numeric count of this promise, starting from 1 (after waiting 3s)
- var p1 = new Promise(
- // The resolver function is called with the ability to resolve or
- // reject the promise
- function(resolve, reject) {
-  log.insertAdjacentHTML('beforeend', thisPromiseCount +
-  ') Promise started (<small>Async code started</small>)<br/>');
-  // This is only an example to create asynchronism
-  window.setTimeout(
-   function() {
-    // We fulfill the promise !
-    resolve(thisPromiseCount);
-   }, Math.random() * 2000 + 1000);
- });
-
-// We define what to do when the promise is resolved/fulfilled with the then() call,
-// and the catch() method defines what to do if the promise is rejected.
-p1.then(
- // Log the fulfillment value
- function(val) {
-  log.insertAdjacentHTML('beforeend', val +
-  ') Promise fulfilled (<small>Async code terminated</small>)<br/>');
- }).catch(
-   // Log the rejection reason
-   function(reason) {
-     console.log('Handle rejected promise ('+reason+') here.');
-   });
-
-   log.insertAdjacentHTML('beforeend', thisPromiseCount +
-   ') Promise made (<small>Sync code terminated</small>)<br/>');
-}
+promise.then(function(val) {
+  console.log(val); // 1
+  return val + 2;
+}).then(function(val) {
+  console.log(val); // 3
+});
             </code></pre>
           </section>
           <section>
@@ -621,21 +575,17 @@ p.then(function(value) {
             </code></pre>
 
             <pre><code data-trim data-noescape>
-var p2 = new Promise(function(resolve, reject) {
- resolve(1);
-});
+function testPromise() {
+ var p1 = new Promise((resolve, reject) => {
+  window.setTimeout(() => { resolve(1); }, Math.random() * 2000 + 1000);
+ });
 
-p2.then(function(value) {
- console.log(value); // 1
- return value + 1;
-}).then(function(value) {
- console.log(value); // 2
-});
-
-p2.then(function(value) {
- console.log(value); // 1
-});
-            </code></pre>
+  p1.then((val) => {
+    console.log('Promise fulfilled Async code terminated');
+  }).catch((reason) => {
+    console.log('Handle rejected promise ('+reason+') here.');
+  });
+}</code></pre>
           </section>
           <section>
             <h4>Promise.prototype.catch()</h4>
