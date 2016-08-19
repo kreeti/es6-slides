@@ -27,8 +27,11 @@
         <section>
           <h2>Advanced Javascript &amp; ES6</h2>
           <h5 style="text-transform:none">by Surendra Singhi</h5>
-	  <h6 style="text-transform:none">Special Thanks to Nabarun Banerjee for making the slides</h6>
           <p>CEO & Founder at Kreeti Technologies</p>
+        </section>
+        <section>
+          <h6 style="text-transform:none">Special Thanks to Nabarun
+          Banerjee for helping in making the slides.</h6>
         </section>
         <section>
           <h4>Functional Programing Paradigm</h4>
@@ -98,8 +101,8 @@ var c = pureFunction( values.a );
           <h4>Higher-order functions</h4>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
-	    <br />
-	    These allow us to abstract over actions, not just values.
+            <br />
+            These allow us to abstract over actions, not just values.
           </p>
 
           <pre><code data-trim data-noescape>
@@ -155,7 +158,7 @@ anon();
         </section>
         <section>
           <h3><span style="text-transform:none"><em>this</em></span> in JS</h3>
-          <h5>Global context</h5>
+          <h6>Global context</h6>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             In the global execution context (outside of any function), this refers to the global object
           </p>
@@ -168,14 +171,12 @@ console.log(this === window); // true
 this.a = 37;
 console.log(window.a); // 37
           </code></pre>
-
-          <h5>Function context - Simple call</h5>
+          <h6>Function context - Simple call</h6>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             Inside a function, the value of <em>this</em> depends on how the function is called. In this case, the value of <em>this</em> is not set by the call. The value of <em>this</em> must always be an object so it defaults to the global object.
           </p>
           <pre><code data-trim data-noescape>
 function f1() { return this; }
-
 f1() === window; // global object
           </code></pre>
         </section>
@@ -204,10 +205,10 @@ console.log(o.f()); // logs 37
 function C() {
   this.a = 37;
 
-// If the function has a return statement that returns an object, that
-// object will be the result of the |new| expression.  Otherwise,
-// the result of the expression is the object currently bound to |this|
-// (i.e., the common case most usually seen).
+// If the function has a return statement that returns an object,
+// that object will be the result of the |new| expression.
+// Otherwise, the result of the expression is the object currently
+// bound to |this| (i.e., the common case most usually seen).
 }
 
 var o = new C();
@@ -215,10 +216,10 @@ console.log(o.a); // logs 37
           </code></pre>
         </section>
         <section>
-          <h5>call <span style="text-transform:none">vs.</span> apply</h5>
+          <h5>call <span style="text-transform:none">versus</span> apply</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
            The value of <em>this</em> keyword can be explicitly bound to a particular object during a function call by using the <em>call</em> or <em>apply</em>
-		methods that all functions inherit from <em>Function.prototype</em>.
+    methods that all functions inherit from <em>Function.prototype</em>.
           </p>
           <pre><code data-trim data-noescape>
 function add(c, d) {
@@ -239,13 +240,13 @@ add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
           </code></pre>
         </section>
         <section>
-          <h5>bind method</h5>
+          <h5 style="text-transform:none">Function.prototype.bind</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
            Calling <em>f.bind(someObject)</em> creates a new function with the same body and scope as <em>f</em>, but where <em>this</em> occurs in the original function, in the new function it is permanently bound to the first argument of bind, regardless of how the function is being used.
           </p>
           <pre><code data-trim data-noescape>
 function f() {
- return this.a;
+  return this.a;
 }
 
 var g = f.bind({ a: "azerty" });
@@ -255,11 +256,11 @@ var o = { a:37, f:f, g:g };
 console.log(o.f(), o.g()); // 37, azerty
           </code></pre>
         </section>
-	<section>
-	  <h3>Some Array Functions</h3>
-	</section>
+  <section>
+    <h3>Some Array Functions</h3>
+  </section>
         <section>
-          <h5><span style="text-transform:none">forEach</span> method</h5>
+          <h5 style="text-transform:none">Array.prototype.forEach</h5>
 
           <pre><code data-trim data-noescape>
 arr.forEach(callback[, thisArg])
@@ -278,7 +279,7 @@ a.forEach(function(entry) {
           </code></pre>
         </section>
         <section>
-          <h5>Iterating using map</h5>
+          <h5 style="text-transform:none">Array.prototype.map</h5>
           <p align="left" style="padding-top: 20px; font-size: 20px">
             The <em>map()</em> method creates a new array with the results of calling a provided function on every element in this array.
             <em>map</em> calls a provided callback function once for each element in an array, in order, and constructs a new array from the results
@@ -304,7 +305,7 @@ var reformattedArray = kvArray.map(function(obj){
           </code></pre>
         </section>
         <section>
-          <h5>reduce function</h5>
+          <h5 style="text-transform:none">Array.prototype.reduce</h5>
 
           <p align="left" style="padding-top: 20px; font-size: 25px">
             The <em>reduce()</em> method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
@@ -312,7 +313,7 @@ var reformattedArray = kvArray.map(function(obj){
 
           <pre><code data-trim data-noescape>
 [0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
- return previousValue + currentValue;
+  return previousValue + currentValue;
 });
           </code></pre>
 
@@ -366,7 +367,7 @@ var reformattedArray = kvArray.map(function(obj){
         <section>
           <h4> => Arrow functions</h4>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-            An arrow function expression has a shorter syntax compared to function expressions and lexically binds the this value
+            An arrow function expression has a shorter syntax compared to function expressions and lexically binds the <em>this</em> value
           </p>
           <pre><code data-trim data-noescape>
 (param1, param2, …, paramN) => { statements }
@@ -382,7 +383,7 @@ singleParam => { statements }
           </code></pre>
         </section>
         <section>
-          <h4>Arrow functions contd...</h4>
+          <h4> => Arrow functions contd...</h4>
           <pre><code data-trim data-noescape>
 var numbers = [1, 4, 9];
 var doubled = numbers.map(x => 2 * x);
@@ -393,9 +394,9 @@ var doubled = numbers.map(x => 2 * x);
 var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
 
 var reformattedArray = kvArray.map((obj) => {
- var rObj = {};
- rObj[obj.key] = obj.value;
- return rObj;
+  var rObj = {};
+  rObj[obj.key] = obj.value;
+  return rObj;
 });
 
 // reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
@@ -408,7 +409,7 @@ var reformattedArray = kvArray.map((obj) => {
            JavaScript is an object-based language based on prototypes, rather than being class-based.
           </p>
           <p align="left" style="padding-top: 20px; font-size: 25px">
-	    JavaScript only has objects. A prototype-based language has the notion of a prototypical object, an object used as a template from which to get the initial properties for a new object. Any object can specify its own properties, either when you create it or at run time. In addition, any object can be associated as the prototype for another object, allowing the second object to share the first object's properties.
+      JavaScript only has objects. A prototype-based language has the notion of a prototypical object, an object used as a template from which to get the initial properties for a new object. Any object can specify its own properties, either when you create it or at run time. In addition, any object can be associated as the prototype for another object, allowing the second object to share the first object's properties.
           </p>
         </section>
         <section>
@@ -419,8 +420,8 @@ var reformattedArray = kvArray.map((obj) => {
           <pre><code data-trim data-noescape>
 var o = {a: 1};
 
-// The newly created object o has Object.prototype as its [[Prototype]]
-// o has no own property named 'hasOwnProperty'
+// The newly created object o has Object.prototype as its
+// [[Prototype]]. o has no own property named 'hasOwnProperty'
 // hasOwnProperty is an own property of Object.prototype.
 // So o inherits hasOwnProperty from Object.prototype
 // Object.prototype has null as its prototype.
@@ -434,48 +435,48 @@ var a = ["yo", "whadup", "?"];
 // a ---> Array.prototype ---> Object.prototype ---> null
 
 function f(){
- return 2;
+  return 2;
 }
 
 // Functions inherit from Function.prototype
 // (which has methods like call, bind, etc.)
 // f ---> Function.prototype ---> Object.prototype ---> null
-</code></pre>
-</section>
+          </code></pre>
+        </section>
         <section>
           <h5>Creating Object Hierarchy in JS</h5>
           <pre><code data-trim data-noescape>
 function Employee() {
- this.name = "";
- this.dept = "general";
+  this.name = "";
+  this.dept = "general";
 }
 
 function Manager() {
- Employee.call(this);
- this.reports = [];
+  Employee.call(this);
+  this.reports = [];
 }
 
 Manager.prototype = Object.create(Employee.prototype);
 
 function WorkerBee() {
- Employee.call(this);
- this.projects = [];
+  Employee.call(this);
+  this.projects = [];
 }
 
 WorkerBee.prototype = Object.create(Employee.prototype);
 
 function SalesPerson() {
- WorkerBee.call(this);
- this.dept = "sales";
- this.quota = 100;
+  WorkerBee.call(this);
+  this.dept = "sales";
+  this.quota = 100;
 }
 
 SalesPerson.prototype = Object.create(WorkerBee.prototype);
 
 function Engineer() {
- WorkerBee.call(this);
- this.dept = "engineering";
- this.machine = "";
+  WorkerBee.call(this);
+  this.dept = "engineering";
+  this.machine = "";
 }
 
 Engineer.prototype = Object.create(WorkerBee.prototype);
@@ -530,18 +531,19 @@ $("#btn_1").click(function() {
             When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. In other words, we aren’t passing the function with the trailing pair of executing parenthesis <em>()</em> like we do when we are executing a function.</p>
           <pre><code data-trim data-noescape>
 $(".fetchRecord").click(function() {
- alert("Requested to fetch record.");
+  alert("Requested to fetch record.");
 });
           </code></pre>
           </section>
           <section>
             <h4>Promise</h4>
             <p align="left" style="padding-top: 20px; font-size: 25px">
-              Promise object is used for asynchronous computations. A Promise represents a single asynchronous operation that hasn't completed yet, but is expected in the future.
+              Promise object is used for asynchronous computations. A <em>Promise</em> represents a single asynchronous operation that hasn't completed yet, but is expected in the future.
             </p>
             <pre><code data-trim data-noescape>
 var promise = new Promise(function(resolve, reject) {
-  window.setTimeout(() => { resolve(1); }, Math.random() * 2000 + 1000);
+  window.setTimeout(() => { resolve(1); },
+    Math.random() * 2000 + 1000);
 });
 
 promise.then(function(val) {
@@ -553,10 +555,10 @@ promise.then(function(val) {
             </code></pre>
           </section>
           <section>
-            <h4>Promise.prototype.then()</h4>
+            <h4 style="text-transform:none">Promise.prototype.then</h4>
             <p align="left" style="padding-top: 20px; font-size: 25px">
               The <em>then()</em> method returns a Promise.
-	      It takes two arguments: callback functions for the success and failure cases of the Promise.
+        It takes two arguments: callback functions for the success and failure cases of the Promise.
             </p>
             <pre><code data-trim data-noescape>
 p.then(onFulfilled, onRejected);
@@ -569,17 +571,17 @@ p.then(function(value) {
             </code></pre>
 
             <pre><code data-trim data-noescape>
-function testPromise() {
-  var p1 = new Promise((resolve, reject) => {
-  window.setTimeout(() => { resolve(1); }, Math.random() * 2000 + 1000);
- });
+var p1 = new Promise((resolve, reject) => {
+  window.setTimeout(() => { resolve(1); },
+    Math.random() * 2000 + 1000);
+});
 
-  p1.then((val) => {
-    console.log('Promise fulfilled Async code terminated');
-  }).catch((reason) => {
-    console.log('Handle rejected promise ('+reason+') here.');
-  });
-}</code></pre>
+p1.then((val) => {
+    console.log('Promise fulfilled Async code terminated');  },
+  (reason) => {
+    console.log('Handle rejected promise ('+reason+') here.'); }
+);
+</code></pre>
           </section>
           <section>
             <h4>Promise.prototype.catch()</h4>
@@ -603,31 +605,31 @@ var p1 = new Promise(function(resolve, reject) {
 });
 
 p1.then(function(value) {
- console.log(value); // "Success!"
- throw 'oh, no!';
+  console.log(value); // "Success!"
+  throw 'oh, no!';
 }).catch(function(e) {
- console.log(e); // "oh, no!"
+  console.log(e); // "oh, no!"
 }).then(function(){
- console.log('after a catch the chain is restored');
+  console.log('after a catch the chain is restored');
 }, function () {
- console.log('Not fired due to the catch');
+  console.log('Not fired due to the catch');
 });
 
 // The following behaves the same as above
 p1.then(function(value) {
- console.log(value); // "Success!"
- return Promise.reject('oh, no!');
+  console.log(value); // "Success!"
+  return Promise.reject('oh, no!');
 }).catch(function(e) {
- console.log(e); // "oh, no!"
+  console.log(e); // "oh, no!"
 }).then(function(){
- console.log('after a catch the chain is restored');
+  console.log('after a catch the chain is restored');
 }, function () {
- console.log('Not fired due to the catch');
+  console.log('Not fired due to the catch');
 });
             </code></pre>
           </section>
           <section>
-	    <h2>Questions?</h2>
+      <h2>Questions?</h2>
           </section>
           <section>
             <h4>References</h4>
@@ -645,7 +647,7 @@ p1.then(function(value) {
             </ul>
           </section>
           <section>
-	    <h2>Thank You!</h2>
+      <h2>Thank You!</h2>
           </section>
       </div>
     </div>
