@@ -26,7 +26,8 @@
       <div class="slides">
         <section>
           <h2>Advanced Javascript &amp; ES6</h2>
-          <h5>by Surendra Singhi</h5>
+          <h5 style="text-transform:none">by Surendra Singhi</h5>
+	  <h6 style="text-transform:none">Special Thanks to Nabarun Banerjee for making the slides</h6>
           <p>CEO & Founder at Kreeti Technologies</p>
         </section>
         <section>
@@ -179,6 +180,7 @@ f1() === window; // global object
           </code></pre>
         </section>
         <section>
+          <h3><span style="text-transform:none"><em>this</em> continued..</span></h3>
           <h5>Object method</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             When a function is called as a method of an object, its <em>this</em> is set to the object the method is called on.
@@ -193,27 +195,19 @@ console.log(o.f()); // logs 37
           </code></pre>
         </section>
         <section>
+          <h3><span style="text-transform:none"><em>this</em> continued..</span></h3>
           <h5>As a constructor</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
            When a function is used as a constructor (with the new keyword), its <em>this</em> is bound to the new object being constructed.
           </p>
           <pre><code data-trim data-noescape>
-/*
-* Constructors work like this:
-*
-* function MyConstructor() {
-*   this.fum = "nom";
-*   // et cetera...
-*
-*   // If the function has a return statement that returns an object, that
-*   // object will be the result of the |new| expression.  Otherwise,
-*   // the result of the expression is the object currently bound to |this|
-*   // (i.e., the common case most usually seen).
-* }
-*/
-
 function C() {
- this.a = 37;
+  this.a = 37;
+
+// If the function has a return statement that returns an object, that
+// object will be the result of the |new| expression.  Otherwise,
+// the result of the expression is the object currently bound to |this|
+// (i.e., the common case most usually seen).
 }
 
 var o = new C();
@@ -300,9 +294,9 @@ var roots = numbers.map(Math.sqrt);
 var kvArray = [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}];
 
 var reformattedArray = kvArray.map(function(obj){
- var rObj = {};
- rObj[obj.key] = obj.value;
- return rObj;
+  var rObj = {};
+  rObj[obj.key] = obj.value;
+  return rObj;
 });
 
 // reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
@@ -526,7 +520,7 @@ console.log(bar); // true
 
           <pre><code data-trim data-noescape>
 $("#btn_1").click(function() {
- alert("Btn 1 Clicked");
+  alert("Btn 1 Clicked");
 });
           </code></pre>
         </section>
@@ -547,7 +541,7 @@ $(".fetchRecord").click(function() {
             </p>
             <pre><code data-trim data-noescape>
 var promise = new Promise(function(resolve, reject) {
-  resolve(1);
+  window.setTimeout(() => { resolve(1); }, Math.random() * 2000 + 1000);
 });
 
 promise.then(function(val) {
@@ -576,7 +570,7 @@ p.then(function(value) {
 
             <pre><code data-trim data-noescape>
 function testPromise() {
- var p1 = new Promise((resolve, reject) => {
+  var p1 = new Promise((resolve, reject) => {
   window.setTimeout(() => { resolve(1); }, Math.random() * 2000 + 1000);
  });
 
