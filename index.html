@@ -25,14 +25,14 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h4>Advanced Javascript &amp; ES6</h4>
+          <h2>Advanced Javascript &amp; ES6</h2>
           <h5>by Surendra Singhi</h5>
           <p>CEO & Founder at Kreeti Technologies</p>
         </section>
         <section>
-          <h4>Functional Programing</h4>
+          <h4>Functional Programing Paradigm</h4>
           <p align="left" style="padding-top: 20px;">
-            It is a programming paradigm—a style of building the structure and elements of computer programs—that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+            A style of building the structure and elements of computer programs—that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
           </p>
           <p align="left" style="padding-top: 20px;">
             In mathematics, a function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.
@@ -63,6 +63,7 @@ int next_n() { return n++; }
 void set_n(int newN) { n = newN; }
             </code>
           </pre>
+
         </section>
 
         <section>
@@ -81,8 +82,7 @@ void set_n(int newN) { n = newN; }
             </li>
           </ul>
 
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 var values = { a: 1 };
 
 function pureFunction ( a ) {
@@ -94,8 +94,8 @@ function pureFunction ( a ) {
 
 var c = pureFunction( values.a );
 // `values.a` has not been modified, it's still 1
-            </code>
-          </pre>
+            </code></pre>
+
         </section>
         <section>
           <h4>Higher-order functions</h4>
@@ -105,8 +105,7 @@ var c = pureFunction( values.a );
 	    These allow us to abstract over actions, not just values.
           </p>
 
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 function greaterThan(n) {
   return function(m) { return m > n; };
 }
@@ -114,11 +113,9 @@ function greaterThan(n) {
 var greaterThan10 = greaterThan(10);
 console.log(greaterThan10(11));
 // → true
-            </code>
-          </pre>
+            </code></pre>
 
-          <pre>
-            <code data-trim data-noescape>
+          <pre><code data-trim data-noescape>
 var items = [
 { name: 'Edward', value: 21 },
 { name: 'Sharpe', value: 37 },
@@ -129,12 +126,8 @@ var items = [
 ];
 
 // sort by value
-
-items.sort(function (a, b) {
-  return a.value > b.value;
-});
-            </code>
-          </pre>
+items.sort(function (a, b) { return a.value > b.value; });
+            </code></pre>
         </section>
         <section>
           <h4>Anonymous function</h4>
@@ -164,181 +157,6 @@ var anon = function() {
 };
 
 anon();
-            </code>
-          </pre>
-        </section>
-        <section>
-          <h5>forEach method</h5>
-
-          <pre>
-            <code data-trim data-noescape>
-arr.forEach(callback[, thisArg])
-            </code>
-          </pre>
-
-          <p align="left" style="padding-top: 20px; font-size: 25px">
-            callback: Function to execute for each element.<br>
-            thisArg: Optional. Value to use as this when executing callback.
-          </p>
-
-          <pre>
-            <code data-trim data-noescape>
-function Counter() {
-  this.sum = 0;
-  this.count = 0;
-}
-
-Counter.prototype.add = function(array) {
-  array.forEach(function(entry) {
-    this.sum += entry;
-    ++this.count;
-  }, this);
-  // ^---- Note
-};
-
-var obj = new Counter();
-obj.add([2, 5, 9]);
-obj.count
-// 3
-obj.sum
-// 16
-            </code>
-          </pre>
-        </section>
-        <section>
-          <h5>Iterating using map</h5>
-          <p align="left" style="padding-top: 20px; font-size: 20px">
-            The map() method creates a new array with the results of calling a provided function on every element in this array.
-            map calls a provided callback function once for each element in an array, in order, and constructs a new array from the results
-          </p>
-
-          <pre>
-            <code data-trim data-noescape>
-var numbers = [1, 4, 9];
-var roots = numbers.map(Math.sqrt);
-// roots is now [1, 2, 3], numbers is still [1, 4, 9]
-            </code>
-          </pre>
-
-          <pre>
-            <code data-trim data-noescape>
-var kvArray = [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}];
-
-var reformattedArray = kvArray.map(function(obj){
- var rObj = {};
- rObj[obj.key] = obj.value;
- return rObj;
-});
-
-// reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
-// kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
-            </code>
-          </pre>
-        </section>
-        <section>
-          <h5>reduce function</h5>
-
-          <p align="left" style="padding-top: 20px; font-size: 25px">
-            The reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
-          </p>
-
-          <pre>
-            <code data-trim data-noescape>
-[0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
- return previousValue + currentValue;
-});
-            </code>
-          </pre>
-
-          <table style="padding-top: 20px; font-size: 15px">
-            <thead>
-              <tr>
-                <th scope="col">&nbsp;</th>
-                <th scope="col"><code>previousValue</code></th>
-                <th scope="col"><code>currentValue</code></th>
-                <th scope="col"><code>currentIndex</code></th>
-                <th scope="col"><code>array</code></th>
-                <th scope="col">return value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">first call</th>
-                <td><code>0</code></td>
-                <td><code>1</code></td>
-                <td><code>1</code></td>
-                <td><code>[0, 1, 2, 3, 4]</code></td>
-                <td><code>1</code></td>
-              </tr>
-              <tr>
-                <th scope="row">second call</th>
-                <td><code>1</code></td>
-                <td><code>2</code></td>
-                <td><code>2</code></td>
-                <td><code>[0, 1, 2, 3, 4]</code></td>
-                <td><code>3</code></td>
-              </tr>
-              <tr>
-                <th scope="row">third call</th>
-                <td><code>3</code></td>
-                <td><code>3</code></td>
-                <td><code>3</code></td>
-                <td><code>[0, 1, 2, 3, 4]</code></td>
-                <td><code>6</code></td>
-              </tr>
-              <tr>
-                <th scope="row">fourth call</th>
-                <td><code>6</code></td>
-                <td><code>4</code></td>
-                <td><code>4</code></td>
-                <td><code>[0, 1, 2, 3, 4]</code></td>
-                <td><code>10</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <section>
-          <h4>Arrow functions</h4>
-          <p align="left" style="padding-top: 20px; font-size: 25px">
-            An arrow function expression has a shorter syntax compared to function expressions and lexically binds the this value
-          </p>
-          <pre>
-            <code data-trim data-noescape>
-(param1, param2, …, paramN) => { statements }
-(param1, param2, …, paramN) => expression
-// equivalent to:  => { return expression; }
-
-// Parentheses are optional when there's only one parameter:
-(singleParam) => { statements }
-singleParam => { statements }
-
-// A function with no parameters requires parentheses:
-() => { statements }
-            </code>
-          </pre>
-        </section>
-        <section>
-          <h4>Arrow functions contd...</h4>
-          <pre>
-            <code data-trim data-noescape>
-var numbers = [1, 4, 9];
-var doubled = numbers.map(x => 2 * x);
-// doubled is now [2, 8, 18], numbers is still [1, 4, 9]
-            </code>
-          </pre>
-
-          <pre>
-            <code data-trim data-noescape>
-var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
-
-var reformattedArray = kvArray.map((obj) => {
- var rObj = {};
- rObj[obj.key] = obj.value;
- return rObj;
-});
-
-// reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
-// kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
             </code>
           </pre>
         </section>
@@ -478,6 +296,181 @@ console.log(g()); // azerty
 
 var o = { a:37, f:f, g:g };
 console.log(o.f(), o.g()); // 37, azerty
+            </code>
+          </pre>
+        </section>
+	<section>
+	  <h3>Some Array Functions</h3>
+	</section>
+        <section>
+          <h5><span style="text-transform:none">forEach</span> method</h5>
+
+          <pre><code data-trim data-noescape>
+arr.forEach(callback[, thisArg])
+            </code></pre>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            callback: Function to execute for each element.<br>
+            thisArg: Optional. Value to use as this when executing callback.
+          </p>
+
+          <pre><code data-trim data-noescape>
+function Counter() {
+  this.sum = 0;
+  this.count = 0;
+}
+
+Counter.prototype.add = function(array) {
+  array.forEach(function(entry) {
+    this.sum += entry;
+    ++this.count;
+  }, this);
+  // ^---- Note
+};
+
+var obj = new Counter();
+obj.add([2, 5, 9]);
+obj.count
+// 3
+obj.sum
+// 16
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h5>Iterating using map</h5>
+          <p align="left" style="padding-top: 20px; font-size: 20px">
+            The map() method creates a new array with the results of calling a provided function on every element in this array.
+            map calls a provided callback function once for each element in an array, in order, and constructs a new array from the results
+          </p>
+
+          <pre>
+            <code data-trim data-noescape>
+var numbers = [1, 4, 9];
+var roots = numbers.map(Math.sqrt);
+// roots is now [1, 2, 3], numbers is still [1, 4, 9]
+            </code>
+          </pre>
+
+          <pre>
+            <code data-trim data-noescape>
+var kvArray = [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}];
+
+var reformattedArray = kvArray.map(function(obj){
+ var rObj = {};
+ rObj[obj.key] = obj.value;
+ return rObj;
+});
+
+// reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
+// kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h5>reduce function</h5>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            The reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
+          </p>
+
+          <pre>
+            <code data-trim data-noescape>
+[0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
+ return previousValue + currentValue;
+});
+            </code>
+          </pre>
+
+          <table style="padding-top: 20px; font-size: 15px">
+            <thead>
+              <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col"><code>previousValue</code></th>
+                <th scope="col"><code>currentValue</code></th>
+                <th scope="col"><code>currentIndex</code></th>
+                <th scope="col"><code>array</code></th>
+                <th scope="col">return value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">first call</th>
+                <td><code>0</code></td>
+                <td><code>1</code></td>
+                <td><code>1</code></td>
+                <td><code>[0, 1, 2, 3, 4]</code></td>
+                <td><code>1</code></td>
+              </tr>
+              <tr>
+                <th scope="row">second call</th>
+                <td><code>1</code></td>
+                <td><code>2</code></td>
+                <td><code>2</code></td>
+                <td><code>[0, 1, 2, 3, 4]</code></td>
+                <td><code>3</code></td>
+              </tr>
+              <tr>
+                <th scope="row">third call</th>
+                <td><code>3</code></td>
+                <td><code>3</code></td>
+                <td><code>3</code></td>
+                <td><code>[0, 1, 2, 3, 4]</code></td>
+                <td><code>6</code></td>
+              </tr>
+              <tr>
+                <th scope="row">fourth call</th>
+                <td><code>6</code></td>
+                <td><code>4</code></td>
+                <td><code>4</code></td>
+                <td><code>[0, 1, 2, 3, 4]</code></td>
+                <td><code>10</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h4> => Arrow functions</h4>
+          <p align="left" style="padding-top: 20px; font-size: 25px">
+            An arrow function expression has a shorter syntax compared to function expressions and lexically binds the this value
+          </p>
+          <pre>
+            <code data-trim data-noescape>
+(param1, param2, …, paramN) => { statements }
+(param1, param2, …, paramN) => expression
+// equivalent to:  => { return expression; }
+
+// Parentheses are optional when there's only one parameter:
+(singleParam) => { statements }
+singleParam => { statements }
+
+// A function with no parameters requires parentheses:
+() => { statements }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h4>Arrow functions contd...</h4>
+          <pre>
+            <code data-trim data-noescape>
+var numbers = [1, 4, 9];
+var doubled = numbers.map(x => 2 * x);
+// doubled is now [2, 8, 18], numbers is still [1, 4, 9]
+            </code>
+          </pre>
+
+          <pre>
+            <code data-trim data-noescape>
+var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
+
+var reformattedArray = kvArray.map((obj) => {
+ var rObj = {};
+ rObj[obj.key] = obj.value;
+ return rObj;
+});
+
+// reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
+// kvArray is still [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}]
             </code>
           </pre>
         </section>
