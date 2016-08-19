@@ -153,7 +153,7 @@ anon();
           </code></pre>
         </section>
         <section>
-          <h4><span style="text-transform:none"><em>this</em></span> in JS</h4>
+          <h3><span style="text-transform:none"><em>this</em></span> in JS</h3>
           <h5>Global context</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             In the global execution context (outside of any function), this refers to the global object
@@ -167,10 +167,8 @@ console.log(this === window); // true
 this.a = 37;
 console.log(window.a); // 37
           </code></pre>
-        </section>
-        <section>
-          <h4>Function context</h4>
-          <h5>Simple call</h5>
+
+          <h5>Function context - Simple call</h5>
           <p align="left" style="padding-top: 20px; font-size: 25px">
             Inside a function, the value of <em>this</em> depends on how the function is called. In this case, the value of <em>this</em> is not set by the call. The value of <em>this</em> must always be an object so it defaults to the global object.
           </p>
@@ -188,12 +186,9 @@ f1() === window; // global object
           </p>
           <pre><code data-trim data-noescape>
 var o = {
- prop: 37,
- f: function() {
- return this.prop;
- }
+  prop: 37,
+  f: function() { return this.prop; }
 };
-
 console.log(o.f()); // logs 37
           </code></pre>
         </section>
@@ -207,17 +202,12 @@ console.log(o.f()); // logs 37
 * Constructors work like this:
 *
 * function MyConstructor() {
-*   // Actual function body code goes here.
-*   // Create properties on |this| as
-*   // desired by assigning to them.  E.g.,
 *   this.fum = "nom";
 *   // et cetera...
 *
-*   // If the function has a return statement that
-*   // returns an object, that object will be the
-*   // result of the |new| expression.  Otherwise,
-*   // the result of the expression is the object
-*   // currently bound to |this|
+*   // If the function has a return statement that returns an object, that
+*   // object will be the result of the |new| expression.  Otherwise,
+*   // the result of the expression is the object currently bound to |this|
 *   // (i.e., the common case most usually seen).
 * }
 */
@@ -228,15 +218,6 @@ function C() {
 
 var o = new C();
 console.log(o.a); // logs 37
-
-
-function C2() {
- this.a = 37;
- return { a:38 };
-}
-
-o = new C2();
-console.log(o.a); // logs 38
           </code></pre>
         </section>
         <section>
@@ -629,7 +610,7 @@ p1.then(
               The <em>then()</em> method returns a Promise.
 	      It takes two arguments: callback functions for the success and failure cases of the Promise.
             </p>
-            <pre><code>
+            <pre><code data-trim data-noescape>
 p.then(onFulfilled, onRejected);
 
 p.then(function(value) {
@@ -639,7 +620,7 @@ p.then(function(value) {
 });
             </code></pre>
 
-            <pre><code>
+            <pre><code data-trim data-noescape>
 var p2 = new Promise(function(resolve, reject) {
  resolve(1);
 });
@@ -661,7 +642,7 @@ p2.then(function(value) {
             <p align="left" style="padding-top: 20px; font-size: 25px">
               The <em>catch()</em> method returns a Promise and deals with rejected cases only.
             </p>
-            <pre><code>
+            <pre><code data-trim data-noescape>
 var p = new Promise(function(resolve, reject) {
 });
 
@@ -672,7 +653,7 @@ p.catch(function(reason) {
 });
             </code></pre>
 
-            <pre><code>
+            <pre><code data-trim data-noescape>
 var p1 = new Promise(function(resolve, reject) {
  resolve('Success');
 });
@@ -702,6 +683,9 @@ p1.then(function(value) {
             </code></pre>
           </section>
           <section>
+	    <h2>Questions?</h2>
+          </section>
+          <section>
             <h4>References</h4>
             <ul align="left" style="padding-top: 20px; font-size: 25px">
               <li>https://en.wikipedia.org/wiki/Side_effect_%28computer_science%29</li>
@@ -715,6 +699,9 @@ p1.then(function(value) {
               <li>https://en.wikipedia.org/wiki/Asynchrony_%28computer_programming%29</li>
               <li>http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/</li>
             </ul>
+          </section>
+          <section>
+	    <h2>Thank You!</h2>
           </section>
       </div>
     </div>
