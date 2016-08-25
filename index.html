@@ -630,6 +630,28 @@ p1.then(function(value) {
 
           </section>
           <section>
+            <h4>Faking Multiple inheritance (almost)</h4>
+            <pre><code data-trim data-noescape>
+function Employee() {
+  this.name = "Mr. N. C. B";
+  this.dept = "general";
+}
+
+function Robot() {
+  this.company = "Kreeti Technologies";
+}
+
+function Manager() {
+  Employee.call(this);
+  Robot.call(this);
+  this.reports = [];
+}
+
+Manager.prototype = Object.create(Employee.prototype);
+Object.assign(Manager.prototype, Robot.prototype);
+    </code></pre>
+          </section>
+          <section>
       <h2>Questions?</h2>
           </section>
           <section>
